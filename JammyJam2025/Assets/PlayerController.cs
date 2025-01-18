@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public LayerMask collisionMask;
+
     const float skinWidth = 0.15f;
     BoxCollider2D pCollider;
     RaycastOrigins raycastOrigins;
@@ -23,6 +25,31 @@ public class PlayerController : MonoBehaviour
     {
         UpdateRaycastOrigins();
         CalculateRaySpacing();
+    }
+    
+    void Move()
+    {
+    }
+
+    void VerticalCollisions(ref Vector3 velocity)
+    {
+        float directionY = Mathf.Sign(velocity.y);
+        float rayLength = Mathf.Abs(directionY) + skinWidth;
+
+        for (int i = 0; i < verticalRayCount; i++)
+        {
+            Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topRight;
+            rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
+
+            if (hit)
+            {
+                velocity.y = (hit.distance - skinWidth) * directionY;
+                rayLength = hit.distance;
+            }
+        }
+
+
     }
 
     void UpdateRaycastOrigins()
