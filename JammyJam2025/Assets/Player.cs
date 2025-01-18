@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         velocity.y += gravity + Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        //controller.Move(velocity * Time.deltaTime); i commented this out casue it was causing compilation issue
     }
 
     // Update is called once per frame
