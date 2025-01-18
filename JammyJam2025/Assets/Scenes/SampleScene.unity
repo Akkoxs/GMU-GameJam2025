@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 873259302}
   - component: {fileID: 873259303}
   - component: {fileID: 873259305}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ShroomPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1077,12 +1077,24 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.45
+      value: -4.332
       objectReference: {fileID: 0}
     - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1115,6 +1127,30 @@ PrefabInstance:
     - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768038476014079247, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: verticalRayCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768038476014079247, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: horizontalRayCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035492066498280184, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: m_Simulated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035492066498280184, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116300555853308815, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: jumpVelocity
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173225656417198032, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
