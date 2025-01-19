@@ -3,6 +3,7 @@ using System.Collections;
 //using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Shroomaloom : LivingEntity
@@ -65,6 +66,10 @@ public class Shroomaloom : LivingEntity
         base.TakeDamage(damage);
 
         healthBar.healthSlider.value = health;
+        if (health <= 0)
+        {
+            SceneManager.LoadSceneAsync("GameOver");
+        }
     }
 
 }
