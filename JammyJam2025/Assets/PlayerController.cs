@@ -84,8 +84,8 @@ public class PlayerController : MonoBehaviour
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
-                collisionInfo.bottom = directionY == -1;
-                collisionInfo.top = directionY == 1;
+                collisionInfo.below = directionY == -1;
+                collisionInfo.above = directionY == 1;
             }
         }
     }
@@ -121,12 +121,12 @@ public class PlayerController : MonoBehaviour
 
     public struct CollisionInfo
     {
-        public bool top, bottom;
+        public bool above, below;
         public bool left, right;
 
         public void Reset()
         {
-            top = bottom = false;
+            above = below = false;
             left = right = false;
         }
     }
