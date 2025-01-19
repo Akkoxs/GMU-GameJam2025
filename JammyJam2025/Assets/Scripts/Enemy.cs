@@ -1,10 +1,11 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : LivingEntity
 {   
     public GameManager gameManager;
-    public float speed = 3.0f;
+    public float speed = 0.5f;
     public float jumpForce = 7.0f;
     public float lineOfSightRange = 10.0f;
     public LayerMask obstaclesLayer;
@@ -19,6 +20,8 @@ public class Enemy : LivingEntity
     private Rigidbody2D rb;
     private bool isGrounded = false;
     private long lastAttackTime = 0;
+    
+    public bool isBeingAttacked;
 
     void Start()
     {
@@ -41,7 +44,13 @@ public class Enemy : LivingEntity
         animator.SetFloat("Speed", horizontalSpeed);
         animator.SetBool("IsAttacking", false);
         animator.SetBool("IsJumping", !isGrounded);
-        MoveTowardsTarget();
+        if (!isBeingAttacked)
+        {
+            MoveTowardsTarget();
+        } else if (isBeingAttacked)
+        {
+            StartCoroutine(Wait());
+        }
 
         AttackIfTargetInRange();
     }
@@ -102,7 +111,9 @@ public class Enemy : LivingEntity
         // Debug.DrawRay(middlePoint.position, Vector2.right * Mathf.Sign(direction.x), Color.red);
 
         // Move towards player.
-        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(direction.x * 0.5f, rb.linearVelocity.y);
+        Debug.Log("enemy velocity: " + rb.linearVelocity);
+        
 
         if (obstacleHit.collider != null && isGrounded) {
             Jump();
@@ -113,7 +124,8 @@ public class Enemy : LivingEntity
     {
         // rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         Debug.Log("Jumping");
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        rb.linearVelocityY = jumpForce;
+        //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
 
@@ -156,5 +168,15 @@ public class Enemy : LivingEntity
         if (gameObject.IsDestroyed()) {
             gameManager.OnEnemyKilled();
         }
+    }
+
+    IEnumerator Wait()
+    {
+        rb.linearVelocity = new Vector2(0, 0);
+        rb.AddForce(new Vector2(1.5f, 0), ForceMode2D.Impulse);
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        isBeingAttacked = false;
+        spriteRenderer.color = Color.white;
     }
 }

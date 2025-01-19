@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayer;
     public PlayerController player;
+    public float targetTime = 1.2f;
+
 
     void Awake()
     {
@@ -40,10 +42,13 @@ public class PlayerAttack : MonoBehaviour
             HitStop.Instance.Stop(0.15f);
             foreach (Collider2D enemy in hitEnemies)
             {
-                Debug.Log("hit Enemies: " + enemy);
-                enemy.GetComponentInParent<Enemy>().TakeDamage(30);
-                enemy.GetComponentInParent<Rigidbody2D>().linearVelocity = new Vector2(-player.directionX * 1000, 0);
+                //Debug.Log("hit Enemies: " + enemy);
+                Enemy e = enemy.GetComponentInParent<Enemy>();
+                e.isBeingAttacked = true;
+                e.TakeDamage(30);
+                //enemy.GetComponentInParent<Rigidbody2D>().linearVelocity = new Vector2(100000, 0);
             }
         }
     }
+
 }                                                                           

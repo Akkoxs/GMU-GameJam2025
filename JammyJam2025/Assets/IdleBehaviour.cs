@@ -13,7 +13,6 @@ public class IdleBehaviour : StateMachineBehaviour
     {
         if (PlayerAttack.Instance.isAttacking)
         {
-            Debug.Log("here in on state update idle");
             PlayerAttack.Instance.animator.Play("Attack");
         }
     }
