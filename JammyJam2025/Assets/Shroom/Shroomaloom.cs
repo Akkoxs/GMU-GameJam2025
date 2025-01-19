@@ -60,6 +60,11 @@ public class Shroomaloom : LivingEntity
 
     }
 
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
 
+        healthBar.healthSlider.value = health;
+    }
 
 }

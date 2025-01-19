@@ -691,10 +691,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 848538684346370086, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+      propertyPath: health
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447950320418759678, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+      propertyPath: health
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1447950320418759678, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2011888565}
+    - target: {fileID: 1447950320418759678, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1447950320418759678, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: serumDelivery
       value: 0
@@ -891,7 +903,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 848538684346370086, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -21122,6 +21135,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 93168864454526645, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
+      propertyPath: m_Value
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 93168864454526645, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
+      propertyPath: m_MaxValue
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1532132999578209424, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
       propertyPath: m_SizeDelta.x
       value: 338.8658
@@ -21170,6 +21191,10 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 5499406647171519439, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
+      propertyPath: shroom
+      value: 
+      objectReference: {fileID: 2082159048}
     - target: {fileID: 6121217631404725435, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
