@@ -57,20 +57,20 @@ public class Enemy : LivingEntity
 
     void AttackIfTargetInRange() {
         Vector3 target = gameManager.player.middlePoint.position;
-        float distanceToTarget = Vector2.Distance(transform.position, target);
+        float distanceToTarget = Vector2.Distance(middlePoint.position, target);
         if (distanceToTarget <= 1.5) {
-            StartAttack(gameManager.player, target);
+            StartAttack();
             return;
         }
 
         target = gameManager.shroomaloom.middlePoint.position;
-        distanceToTarget = Vector2.Distance(transform.position, target);
+        distanceToTarget = Vector2.Distance(middlePoint.position, target);
         if (distanceToTarget <= 1.5) {
-            StartAttack(gameManager.shroomaloom, target);
+            StartAttack();
         }
     }
 
-    void StartAttack(LivingEntity entity, Vector3 target) {
+    void StartAttack() {
         long currentTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
         if (currentTime - lastAttackTime < 2000) return;
 
@@ -90,13 +90,13 @@ public class Enemy : LivingEntity
 
         Vector3 target = gameManager.player.middlePoint.position;
         float distanceToTarget = Vector2.Distance(transform.position, target);
-        if (distanceToTarget <= 1.5) {
+        if (distanceToTarget <= 1) {
             gameManager.player.TakeDamage(damage);
             return;
         }
 
         target = gameManager.shroomaloom.middlePoint.position;
-        distanceToTarget = Vector2.Distance(transform.position, target);
+        distanceToTarget = Mathf.Abs(target.x - middlePoint.position.x);
         if (distanceToTarget <= 1.5) {
             gameManager.shroomaloom.TakeDamage(damage);
         }
@@ -185,6 +185,11 @@ public class Enemy : LivingEntity
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
 
         if (gameObject.IsDestroyed()) {
             gameManager.OnEnemyKilled();
