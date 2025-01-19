@@ -1054,7 +1054,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6328707869931336794}
   - component: {fileID: 848538684346370086}
-  - component: {fileID: 7391690084680769926}
   m_Layer: 0
   m_Name: Shroomaloom
   m_TagString: Untagged
@@ -1076,7 +1075,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6298570744215524299}
-  - {fileID: 6609785433697305514}
+  - {fileID: 8656782579728355772}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &848538684346370086
@@ -2833,6 +2832,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7187030781228036267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8656782579728355772}
+  m_Layer: 0
+  m_Name: Shroom Middle Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8656782579728355772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187030781228036267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.09, y: -1.61, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6328707869931336794}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7342379016382537456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,6 +3609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a3f1d924b65a34b8f839e96f213a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  middlePoint: {fileID: 8656782579728355772}
   serumDelivery: 0
   platformSpawn: 0
   growSpeed: 10
