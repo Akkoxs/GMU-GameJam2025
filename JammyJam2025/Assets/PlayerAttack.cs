@@ -7,6 +7,8 @@ public class PlayerAttack : MonoBehaviour
     public static PlayerAttack Instance;
     public bool isAttacking = false;
     public Animator animator;
+    public Transform attackPoint;
+    public LayerMask enemyLayer;
 
     void Awake()
     {
@@ -22,10 +24,17 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isAttacking)
+        if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             Debug.Log("isAttacking: " + isAttacking);
             isAttacking = true;
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 0.5f, enemyLayer);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+
+            }
         }
+
     }
 }                                                                           

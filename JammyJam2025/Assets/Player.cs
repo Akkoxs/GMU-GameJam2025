@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     float velocityXSmoothing;
 
     private bool facingRight;
+    private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
 
     PlayerController controller;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<PlayerController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
         if (controller.collisionInfo.above || controller.collisionInfo.below)
         {
             velocity.y = 0;
+            animator.SetBool("isJumping", false);
         }
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -42,6 +45,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && controller.collisionInfo.below)
         {
             velocity.y = jumpVelocity;
+            animator.SetBool("isJumping", true);
         }
 
         if ((velocity.x > 0 || velocity.x < 0) && !PlayerAttack.Instance.isAttacking)
@@ -53,7 +57,14 @@ public class Player : MonoBehaviour
         }
 
         float targetVelocityX = input.x * moveSpeed;
-        //Animate(targetVelocityX);
+
+        if (velocity.x < 0f)
+        {
+            spriteRenderer.flipX = true;
+        } else if (velocity.x > 0f) {
+            spriteRenderer.flipX = false;
+        }
+
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.x = targetVelocityX;
         velocity.y += gravity * Time.deltaTime;
