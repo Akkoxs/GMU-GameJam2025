@@ -3,7 +3,14 @@ using UnityEngine;
 
 public class HitStop : MonoBehaviour
 {
+    public static HitStop Instance;
     bool waiting;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void Stop(float duration)
     {
         if (waiting)

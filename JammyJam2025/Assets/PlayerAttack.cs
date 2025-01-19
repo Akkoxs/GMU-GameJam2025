@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public LayerMask enemyLayer;
+    private HitStop hitstop;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (Collider2D enemy in hitEnemies)
             {
+                enemy.GetComponent<Enemy>().TakeDamage(50);
 
             }
         }
