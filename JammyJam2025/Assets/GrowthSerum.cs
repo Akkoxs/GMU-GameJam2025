@@ -5,13 +5,23 @@ using UnityEngine;
 public class GrowthSerum : MonoBehaviour
 {
     public bool pickedUpSerum;
+    public bool droppedOffSerum;
     public GameObject baseMushroomTrigger;
     private SpriteRenderer spriteRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        droppedOffSerum = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (droppedOffSerum)
+        {
+            StartCoroutine(Wait());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,6 +38,7 @@ public class GrowthSerum : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(5f);
         pickedUpSerum = false;
+        droppedOffSerum = false;
         baseMushroomTrigger.SetActive(false);
         spriteRenderer.enabled = true;
     }
