@@ -548,6 +548,10 @@ PrefabInstance:
       propertyPath: shroom
       value: 
       objectReference: {fileID: 2082159048}
+    - target: {fileID: 1605786949233558445, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+      propertyPath: shroom
+      value: 
+      objectReference: {fileID: 2082159048}
     - target: {fileID: 1966196142569795529, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_Name
       value: Shroomaloom
@@ -21499,7 +21503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.54647
+      value: -5.794
       objectReference: {fileID: 0}
     - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21544,6 +21548,10 @@ PrefabInstance:
     - target: {fileID: 9213440645240638792, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
       propertyPath: m_Name
       value: MushroomEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213440645240638792, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
