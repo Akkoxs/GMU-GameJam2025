@@ -232,6 +232,7 @@ MonoBehaviour:
     m_Bits: 8
   horizontalRayCount: 4
   verticalRayCount: 4
+  directionX: 0
 --- !u!95 &5414036605410297711
 Animator:
   serializedVersion: 7
@@ -273,6 +274,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   player: {fileID: 3948285772128578847}
+  targetTime: 1.2
 --- !u!114 &5195074496239586566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,4 +287,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce272f9917a57542b1b6ba4d7a32129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   maxHealth: 100
