@@ -15,15 +15,9 @@ public class HealFX : MonoBehaviour
         spri.enabled = false;
     }
 
-    // Update is called once per frame
-    public void TriggerHealFX(){
-        anima.SetTrigger("isHealing");
-
-    }
-
     public void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Player")){
-            TriggerHealFX();
+            anima.SetTrigger("isHealing");
             spri.enabled = true;
         }
     }

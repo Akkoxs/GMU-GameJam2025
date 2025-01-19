@@ -11,36 +11,35 @@ public class Shroomaloom : MonoBehaviour
     private Transform trans;
 
     [SerializeField] public bool serumDelivery = false;
+    [SerializeField] public bool platformSpawn = false;
     [SerializeField] float growSpeed = 10f;
     [SerializeField] float growDuration = 2;
     [SerializeField] public int serumCounter = 0;
     [SerializeField] public ShroomHealthBar healthBar;
+    [SerializeField] public Animation anima;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
-
     }
 
     // Update is called once per frame
     void Update(){
 
     if(serumDelivery){
+        platformSpawn = true;
         SerumDelivery();
     }    
 
-    }
-
-    private void TakeDamage(){
-        
     }
 
     public void SerumDelivery(){
         StartCoroutine(GrowMushroom());
         serumCounter++;
         serumDelivery = false; //reset back 
+        platformSpawn =  false; //reset back 
         }
 
     public IEnumerator GrowMushroom(){
