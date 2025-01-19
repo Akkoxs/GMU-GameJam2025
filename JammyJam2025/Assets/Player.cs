@@ -4,7 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
-
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
@@ -13,12 +12,17 @@ public class Player : MonoBehaviour
 
     float gravity;
     float jumpVelocity;
-    Vector3 velocity;
+    [HideInInspector]
+    public Vector3 velocity;
+
     float velocityXSmoothing;
 
     private bool facingRight;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
+
+    [HideInInspector]
+    private bool isAttacking;
 
     PlayerController controller;
 
@@ -70,22 +74,4 @@ public class Player : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
-    //private void Animate(float moveX)
-    //{
-    //    if (moveX < 0 && !facingRight)
-    //    {
-    //        FlipCharacter();
-    //    }
-    //    else if (moveX > 0 && facingRight)
-    //    {
-    //        FlipCharacter();
-    //    }
-    //}
-
-    //private void FlipCharacter()
-    //{
-    //    facingRight = !facingRight;
-    //    transform.Rotate(0f, 180f, 0f);
-    //}
 }
