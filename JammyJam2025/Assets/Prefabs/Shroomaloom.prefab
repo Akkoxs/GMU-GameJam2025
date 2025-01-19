@@ -1054,6 +1054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6328707869931336794}
   - component: {fileID: 848538684346370086}
+  - component: {fileID: 7391690084680769926}
   m_Layer: 0
   m_Name: Shroomaloom
   m_TagString: Untagged
@@ -1075,6 +1076,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6298570744215524299}
+  - {fileID: 6609785433697305514}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &848538684346370086

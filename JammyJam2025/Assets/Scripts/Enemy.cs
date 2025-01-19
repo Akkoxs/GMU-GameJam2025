@@ -16,33 +16,33 @@ public class Enemy : LivingEntity
     public SpriteRenderer spriteRenderer;
 
     public Transform middlePoint;
+    public int damage = 50;
 
     private Rigidbody2D rb;
     private bool isGrounded = false;
     private long lastAttackTime = 0;
-    
     public bool isBeingAttacked;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
     void Update()
     {
-        if (gameManager.player.transform == null) return;
+        if (gameManager.player.gameObject.transform == null) return;
 
         // TODO Is using collisions better?
         // isGrounded = Physics2D.OverlapCircle(groundPoint.position, groundPointRadius, groundLayer);
 
         float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
         // Flip sprite if walking left.
-        spriteRenderer.flipX = rb.linearVelocity.x < 0;
+        spriteRenderer.flipX = rb.linearVelocity.x < 0.01;
 
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetFloat("Speed", horizontalSpeed);
-        animator.SetBool("IsAttacking", false);
         animator.SetBool("IsJumping", !isGrounded);
         if (!isBeingAttacked)
         {
@@ -56,55 +56,79 @@ public class Enemy : LivingEntity
     }
 
     void AttackIfTargetInRange() {
-        // Vector3 target = gameManager.playerData.middlePoint.position;
-        // float distanceToTarget = Vector2.Distance(transform.position, target);
+        Vector3 target = gameManager.player.middlePoint.position;
+        float distanceToTarget = Vector2.Distance(transform.position, target);
+        if (distanceToTarget <= 1.5) {
+            StartAttack(gameManager.player, target);
+            return;
+        }
 
-        // if (distanceToTarget <= 2.0f)
-        // {
-        //     Attack(target);
-        //     return;
-        // }
-
-        // Vector3 target = gameManager.shroomaloomData.middlePoint.position;
-        // float distanceToTarget = Vector2.Distance(transform.position, target);
-
-        // if (distanceToTarget <= 2.0f)
-        // {
-        //     Attack(target);
-        // }
+        target = gameManager.shroomaloom.middlePoint.position;
+        distanceToTarget = Vector2.Distance(transform.position, target);
+        if (distanceToTarget <= 1.5) {
+            StartAttack(gameManager.shroomaloom, target);
+        }
     }
 
-    void Attack(Vector3 target) {
+    void StartAttack(LivingEntity entity, Vector3 target) {
+        long currentTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        if (currentTime - lastAttackTime < 2000) return;
+
+        lastAttackTime = currentTime;
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetBool("IsAttacking", true);
+        Debug.Log("Attack time: " + currentTime);
+
+        // This animation is fucked, idk whats going on tbh.
+        Invoke(nameof(ExecuteAttack), 670 / 2 / 1000f);
+        Invoke(nameof(ResetAttackAnimation), 670 / 1000f);
     }
 
-    void ExecuteAttack(Vector3 target) {
-        // Check that target is in LOS.
-        Vector2 direction = (target - middlePoint.transform.position).normalized;
-        RaycastHit2D obstacleHit = Physics2D.Raycast(middlePoint.position, direction, 1.0f, obstaclesLayer);
+    void ExecuteAttack() {
+        long currentTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        Debug.Log("Execute time: " + currentTime);
 
-        if (obstacleHit.collider != null && isGrounded) {
-            Jump();
+        Vector3 target = gameManager.player.middlePoint.position;
+        float distanceToTarget = Vector2.Distance(transform.position, target);
+        if (distanceToTarget <= 1.5) {
+            gameManager.player.TakeDamage(damage);
+            return;
         }
+
+        target = gameManager.shroomaloom.middlePoint.position;
+        distanceToTarget = Vector2.Distance(transform.position, target);
+        if (distanceToTarget <= 1.5) {
+            gameManager.shroomaloom.TakeDamage(damage);
+        }
+
+        // TODO: The above is kinda unfair, LOS check?
+        // Vector2 direction = (entity.middlePoint.position - middlePoint.transform.position).normalized;
+        // RaycastHit2D obstacleHit = Physics2D.Raycast(middlePoint.position, direction, 1.0f, obstaclesLayer);
+    }
+
+    void ResetAttackAnimation() {
+        long currentTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
+        Debug.Log("Reset time: " + currentTime);
+
+        Animator animator = spriteRenderer.GetComponent<Animator>();
+        animator.SetBool("IsAttacking", false);
     }
 
     private bool HasLineOfSight()
     {
-        Vector3 middle = middlePoint.position;
-        float distanceToPlayer = Vector2.Distance(middle, gameManager.player.transform.position);
-        //Debug.Log("distanceToPlayer: " + distanceToPlayer);
+        Vector3 thisMiddle = middlePoint.position;
+        float distanceToPlayer = Vector2.Distance(thisMiddle, gameManager.player.middlePoint.position);
         if (distanceToPlayer > lineOfSightRange) return false;
 
-        Vector2 directionToPlayer = (gameManager.player.transform.position - middle).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(middle, directionToPlayer, lineOfSightRange, obstaclesLayer);
+        Vector2 directionToPlayer = (gameManager.player.middlePoint.position - thisMiddle).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(thisMiddle, directionToPlayer, lineOfSightRange, obstaclesLayer);
 
         return hit.collider == null || hit.collider.CompareTag("Player");
     }
 
     private void MoveTowardsTarget()
     {
-        Vector3 target = HasLineOfSight() ? gameManager.player.transform.position : gameManager.shroomaloom.transform.position;
+        Vector3 target = HasLineOfSight() ? gameManager.player.middlePoint.position : gameManager.shroomaloom.middlePoint.position;
         Vector2 direction = (target - transform.position).normalized;
 
         RaycastHit2D obstacleHit = Physics2D.Raycast(middlePoint.position, Vector2.right * Mathf.Sign(direction.x), 1.0f, obstaclesLayer);
@@ -122,17 +146,14 @@ public class Enemy : LivingEntity
 
     private void Jump()
     {
-        // rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        Debug.Log("Jumping");
-        rb.linearVelocityY = jumpForce;
-        //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
     }
 
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lineOfSightRange);
+        Gizmos.DrawWireSphere(middlePoint.position, lineOfSightRange);
 
         if (groundPoint != null)
         {

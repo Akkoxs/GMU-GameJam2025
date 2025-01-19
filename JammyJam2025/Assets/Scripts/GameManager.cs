@@ -4,17 +4,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // These two are totally not confusing as fuck
-    public Player playerData;
-    public Shroomaloom shroomaloomData;
-    public GameObject player;
-    public GameObject shroomaloom;
+    public Player player;
+    public Shroomaloom shroomaloom;
     public Transform spawnPoint1;
     public Transform spawnPoint2;
     public GameObject enemyPrefab;
     public float spawnInterval = 2f;
 
     private int currentWave = 0;
-    private int maxEnemiesPerWave = 10;
+    private int maxEnemiesPerWave = 5;
     private int enemiesSpawned = 0;
     private int enemiesAlive = 0;
 

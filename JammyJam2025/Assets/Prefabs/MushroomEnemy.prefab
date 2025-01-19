@@ -140,12 +140,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -244287202747251202, guid: 2184eb7f172377441aab4e632573c674, type: 3}
+  m_Sprite: {fileID: -4466724893170434795, guid: 915cfc7f4f02bdc47b6e7163c0f57bf5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 0.15, y: 0.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -198,7 +198,7 @@ Animator:
   m_GameObject: {fileID: 8634937068109049513}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -4692072355894887125, guid: 2184eb7f172377441aab4e632573c674, type: 3}
+  m_Controller: {fileID: 9100000, guid: e2450ed9c42a5994781255206a122946, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -294,10 +294,10 @@ MonoBehaviour:
   obstaclesLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundPoint: {fileID: 0}
+  groundPoint: {fileID: 8900921508108842474}
   groundPointRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   spriteRenderer: {fileID: 7897271519088795366}
-  middlePoint: {fileID: 0}
+  middlePoint: {fileID: 4921289821210233602}

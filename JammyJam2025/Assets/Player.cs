@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(PlayerController))]
-public class Player : MonoBehaviour
+public class Player : LivingEntity
 {
+    public Transform middlePoint;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
@@ -26,8 +27,9 @@ public class Player : MonoBehaviour
 
     PlayerController controller;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         controller = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 

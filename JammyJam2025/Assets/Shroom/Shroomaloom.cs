@@ -5,8 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shroomaloom : MonoBehaviour
+public class Shroomaloom : LivingEntity
 {
+    public Transform middlePoint;
     private Rigidbody2D rb;
     private Transform trans;
 
@@ -20,9 +21,11 @@ public class Shroomaloom : MonoBehaviour
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start(){
+    public override void Start(){
+        base.Start();
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
+        maxHealth = 500;
     }
 
     // Update is called once per frame

@@ -5,15 +5,16 @@ public class LivingEntity : MonoBehaviour
     public int health;
     public int maxHealth = 100;
 
-    void Start()
+    public virtual void Start()
     {   
         health = maxHealth;
     }
 
-    virtual public void TakeDamage(int damage) {
+    public virtual void TakeDamage(int damage) {
         health -= damage;
         if (health <= 0) {
-            Destroy(gameObject);
+            // TODO Have some sort of dead texture/state instead?
+            // Destroy(gameObject);
         }
     }
 }
