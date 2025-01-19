@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 5466061385735453779}
   - component: {fileID: 7897271519088795366}
   - component: {fileID: 8582873883393104838}
-  - component: {fileID: 241941216392154402}
   - component: {fileID: 3994281567847998828}
   m_Layer: 0
   m_Name: Mushroom Sprite
@@ -189,20 +188,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0057280064, y: 0.14599626}
   m_Size: {x: 0.065346055, y: 0.2736651}
   m_Direction: 0
---- !u!114 &241941216392154402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8634937068109049513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a7eaadde9f8e44fb55babadc591178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  player: {fileID: 0}
 --- !u!95 &3994281567847998828
 Animator:
   serializedVersion: 7
@@ -300,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb9b433a9b02ac49adac95b1b70252a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   maxHealth: 100
   gameManager: {fileID: 0}
   speed: 3

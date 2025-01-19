@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public LayerMask enemyLayer;
-    public Player player;
+    public PlayerController player;
 
     void Awake()
     {
@@ -25,27 +25,25 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacking && player.velocity.y < 0)
+        if (Input.GetMouseButtonDown(0) && !isAttacking && player.collisionInfo.below)
         {
-            player.velocity.x = 0f;
-            Debug.Log("isAttacking: " + isAttacking);
             isAttacking = true;
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 0.5f, enemyLayer);
-
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                enemy.GetComponent<Enemy>().TakeDamage(50);
-            }
-
-            if (hitEnemies != null)
-            {
-            }
         }
 
     }
 
     public void slashHitstop()
     {
-        HitStop.Instance.Stop(0.15f);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 0.7f, enemyLayer);
+        if (hitEnemies.Length != 0)
+        {
+            HitStop.Instance.Stop(0.15f);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                Debug.Log("hit Enemies: " + enemy);
+                enemy.GetComponentInParent<Enemy>().TakeDamage(30);
+                enemy.GetComponentInParent<Rigidbody2D>().linearVelocity = new Vector2(-player.directionX * 1000, 0);
+            }
+        }
     }
 }                                                                           

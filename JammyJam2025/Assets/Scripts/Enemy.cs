@@ -23,6 +23,7 @@ public class Enemy : LivingEntity
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     void Update()
@@ -83,7 +84,7 @@ public class Enemy : LivingEntity
     {
         Vector3 middle = middlePoint.position;
         float distanceToPlayer = Vector2.Distance(middle, gameManager.player.transform.position);
-        Debug.Log("distanceToPlayer: " + distanceToPlayer);
+        //Debug.Log("distanceToPlayer: " + distanceToPlayer);
         if (distanceToPlayer > lineOfSightRange) return false;
 
         Vector2 directionToPlayer = (gameManager.player.transform.position - middle).normalized;

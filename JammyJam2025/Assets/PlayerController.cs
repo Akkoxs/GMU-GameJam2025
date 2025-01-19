@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
+    public float directionX;
+
     BoxCollider2D pCollider;
     RaycastOrigins raycastOrigins;
 
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     void HorizontalCollisions(ref Vector3 velocity)
     {
-        float directionX = Mathf.Sign(velocity.x);
+        directionX = Mathf.Sign(velocity.x);
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
 
         for (int i = 0; i < horizontalRayCount; i++)

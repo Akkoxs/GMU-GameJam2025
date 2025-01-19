@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LivingEntity : MonoBehaviour
 {
-    private int health;
+    public int health;
     public int maxHealth = 100;
 
     void Start()
