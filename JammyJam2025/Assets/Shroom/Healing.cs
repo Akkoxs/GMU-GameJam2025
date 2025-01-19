@@ -9,6 +9,7 @@ public class Healing : MonoBehaviour
 
     private Coroutine healCoroutine;
 
+
     public void OnTriggerEnter2D(Collider2D collider){
         if((collider.gameObject.CompareTag("Player")) && (healCoroutine == null)){
             healCoroutine = StartCoroutine(Heal());

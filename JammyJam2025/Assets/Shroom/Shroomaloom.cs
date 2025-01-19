@@ -14,6 +14,7 @@ public class Shroomaloom : MonoBehaviour
     [SerializeField] float growSpeed = 10f;
     [SerializeField] float growDuration = 2;
     [SerializeField] public int serumCounter = 0;
+    [SerializeField] public ShroomHealthBar healthBar;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,8 +33,9 @@ public class Shroomaloom : MonoBehaviour
 
     }
 
-
-    //private void HealPad(){}
+    private void TakeDamage(){
+        
+    }
 
     public void SerumDelivery(){
         StartCoroutine(GrowMushroom());
