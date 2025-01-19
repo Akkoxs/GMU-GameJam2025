@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class ShroomHealthBar : MonoBehaviour
 {
     [SerializeField] public Slider healthSlider;
     public void SetMaxHealth(int health){
@@ -11,5 +11,4 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int health){
         healthSlider.value = health;
     }
-
 }
