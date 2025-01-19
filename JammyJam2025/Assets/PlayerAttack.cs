@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void slashHitstop()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 0.7f, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 0.4f, enemyLayer);
         if (hitEnemies.Length != 0)
         {
             HitStop.Instance.Stop(0.15f);

@@ -16,6 +16,7 @@ public class Player : LivingEntity
     [HideInInspector]
     public Vector3 velocity;
 
+    public float targetVelocityX;
     float velocityXSmoothing;
 
     private bool facingRight;
@@ -62,7 +63,7 @@ public class Player : LivingEntity
             animator.SetBool("isWalking", false);
         }
 
-        float targetVelocityX = input.x * moveSpeed;
+        targetVelocityX = input.x * moveSpeed;
 
         if (velocity.x < 0f)
         {

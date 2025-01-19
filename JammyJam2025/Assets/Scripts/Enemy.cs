@@ -194,7 +194,7 @@ public class Enemy : LivingEntity
     IEnumerator Wait()
     {
         rb.linearVelocity = new Vector2(0, 0);
-        rb.AddForce(new Vector2(1.5f, 0), ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(-gameManager.player.targetVelocityX * 1.5f, 0), ForceMode2D.Impulse);
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
         isBeingAttacked = false;
