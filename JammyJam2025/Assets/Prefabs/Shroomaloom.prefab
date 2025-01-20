@@ -3598,8 +3598,8 @@ MonoBehaviour:
   middlePoint: {fileID: 8656782579728355772}
   serumDelivery: 0
   platformSpawn: 0
-  growSpeed: 10
-  growDuration: 2
+  growSpeed: 1
+  growDuration: 1
   serumCounter: 0
   healthBar: {fileID: 0}
   anima: {fileID: 0}
