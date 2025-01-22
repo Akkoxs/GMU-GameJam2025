@@ -21402,7 +21402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2106564623893689254, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
       propertyPath: m_Value
-      value: 66
+      value: 32.6
       objectReference: {fileID: 0}
     - target: {fileID: 2237611591273926183, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
       propertyPath: m_AnchorMax.x
@@ -21661,9 +21661,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4116300555853308815, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: hp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116300555853308815, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: jumpHeight
       value: 0.85
       objectReference: {fileID: 0}
+    - target: {fileID: 4116300555853308815, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: player_healthBar
+      value: 
+      objectReference: {fileID: 1394003116}
+    - target: {fileID: 4116300555853308815, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: player_healthSlider
+      value: 
+      objectReference: {fileID: 1394003118}
     - target: {fileID: 8706872932078160576, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: player_healthBar
       value: 

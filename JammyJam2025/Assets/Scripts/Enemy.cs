@@ -136,7 +136,7 @@ public class Enemy : LivingEntity
 
         // Move towards player.
         rb.linearVelocity = new Vector2(direction.x * 0.5f, rb.linearVelocity.y);
-        Debug.Log("enemy velocity: " + rb.linearVelocity);
+        //Debug.Log("enemy velocity: " + rb.linearVelocity);
         
 
         if (obstacleHit.collider != null && isGrounded) {

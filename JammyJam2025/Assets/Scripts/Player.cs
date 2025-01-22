@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : LivingEntity
 {
+
     public Transform middlePoint;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
@@ -22,6 +24,7 @@ public class Player : LivingEntity
     private bool facingRight;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
+  
 
     [HideInInspector]
     private bool isAttacking;
@@ -76,5 +79,10 @@ public class Player : LivingEntity
         velocity.x = targetVelocityX;
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        //PlayerHealth();
     }
+
+
+
 }
