@@ -18,7 +18,6 @@ public class SpawnPlatform : MonoBehaviour
 
     public void Spawn(){
         if((currPlatform < platforms.Length)){
-            Debug.Log("POOPS");
             platforms[currPlatform].SetActive(true);
             currPlatform++;
         }

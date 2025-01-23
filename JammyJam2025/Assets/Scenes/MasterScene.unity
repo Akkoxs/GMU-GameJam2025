@@ -1058,7 +1058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6328707869931336794, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.545
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 6328707869931336794, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21176,7 +21176,7 @@ Transform:
   m_GameObject: {fileID: 765567150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.277, y: -4.776, z: -10}
+  m_LocalPosition: {x: -0.277, y: -3.7770002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21599,9 +21599,9 @@ PrefabInstance:
       addedObject: {fileID: 325822308}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2836eec7523b194bb9a97c8e665b993, type: 3}
---- !u!4 &958900282 stripped
+--- !u!4 &904609427 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9006002287996105123, guid: 3747073761113d348a95b67af70294d8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6745806473762633265, guid: 3747073761113d348a95b67af70294d8, type: 3}
   m_PrefabInstance: {fileID: 999506184}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &999506184
@@ -21626,7 +21626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.596
+      value: -4.597
       objectReference: {fileID: 0}
     - target: {fileID: 3328094431845304507, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21663,6 +21663,14 @@ PrefabInstance:
     - target: {fileID: 4116300555853308815, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: jumpHeight
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: transitionTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: timeUntilTransition
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8706872932078160576, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: player_healthBar
@@ -21765,7 +21773,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 958900282}
+    TrackingTarget: {fileID: 904609427}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -21797,7 +21805,7 @@ Transform:
   m_GameObject: {fileID: 1073565131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.277, y: -4.776, z: -10}
+  m_LocalPosition: {x: -0.277, y: -3.7770002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
