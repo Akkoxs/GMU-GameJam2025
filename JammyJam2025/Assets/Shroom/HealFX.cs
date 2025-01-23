@@ -4,8 +4,9 @@ using UnityEngine;
 public class HealFX : MonoBehaviour
 {
 
-    public Animator anima; 
-    public SpriteRenderer spri;
+    [SerializeField] public Animator anima; 
+    [SerializeField] public SpriteRenderer spri;
+    public Collider2D healingPad;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
