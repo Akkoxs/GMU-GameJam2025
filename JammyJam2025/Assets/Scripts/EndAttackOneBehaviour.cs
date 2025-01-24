@@ -12,6 +12,7 @@ public class EndAttackOneBehaviour : StateMachineBehaviour
     {
         if (PlayerAttack.Instance.isAttacking)
         {
+            Debug.Log("Attack2Start");
             PlayerAttack.Instance.animator.Play("Attack2");
         }
     }
@@ -20,6 +21,7 @@ public class EndAttackOneBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PlayerAttack.Instance.isAttacking = false;
+        Debug.Log("Attack2End");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

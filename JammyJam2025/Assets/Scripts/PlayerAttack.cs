@@ -27,8 +27,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacking && player.collisionInfo.below)
-        {
+        if (Input.GetMouseButtonDown(0) && !isAttacking && player.collisionInfo.below){
             isAttacking = true;
         }
 

@@ -136,10 +136,10 @@ GameObject:
   - component: {fileID: 965704198682727051}
   - component: {fileID: -997372988991832249}
   - component: {fileID: 7173225656417198032}
+  - component: {fileID: 8948173173694923797}
   - component: {fileID: 4116300555853308815}
   - component: {fileID: 3948285772128578847}
   - component: {fileID: 5414036605410297711}
-  - component: {fileID: 8948173173694923797}
   - component: {fileID: 8706872932078160576}
   - component: {fileID: 2993438203437609343}
   - component: {fileID: 6947088906106810379}
@@ -298,6 +298,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8948173173694923797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166706207906885797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df52791bb70137f418dd0bc72f160b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  animator: {fileID: 5414036605410297711}
+  attackPoint: {fileID: 4803051114950916086}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  player: {fileID: 3948285772128578847}
+  targetTime: 1.2
 --- !u!114 &4116300555853308815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,26 +378,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8948173173694923797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166706207906885797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df52791bb70137f418dd0bc72f160b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAttacking: 0
-  animator: {fileID: 5414036605410297711}
-  attackPoint: {fileID: 4803051114950916086}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  player: {fileID: 3948285772128578847}
-  targetTime: 1.2
 --- !u!114 &8706872932078160576
 MonoBehaviour:
   m_ObjectHideFlags: 0
