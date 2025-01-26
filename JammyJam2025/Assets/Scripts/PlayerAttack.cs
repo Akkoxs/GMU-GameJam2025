@@ -41,10 +41,15 @@ public class PlayerAttack : MonoBehaviour
             HitStop.Instance.Stop(0.15f);
             foreach (Collider2D enemy in hitEnemies)
             {
-                //Debug.Log("hit Enemies: " + enemy);
                 Enemy e = enemy.GetComponentInParent<Enemy>();
-                e.isBeingAttacked = true;
-                e.TakeDamage(30);
+                //Debug.Log("hit Enemies: " + enemy);
+                if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FinalAttack"))
+                {
+                    e.isFinalAttack = true;
+                }
+                    e.isBeingAttacked = true;
+                    e.TakeDamage(5);
+                
                 //enemy.GetComponentInParent<Rigidbody2D>().linearVelocity = new Vector2(100000, 0);
             }
         }

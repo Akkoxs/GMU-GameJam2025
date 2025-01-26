@@ -12,7 +12,7 @@ public class Player : LivingEntity
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
-    float moveSpeed = 2;
+    public float moveSpeed = 1;
 
     float gravity;
     float jumpVelocity;
@@ -23,7 +23,8 @@ public class Player : LivingEntity
     float velocityXSmoothing;
 
     private bool facingRight;
-    private SpriteRenderer spriteRenderer;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] public HealthBar player_healthBar; 
 
@@ -32,6 +33,12 @@ public class Player : LivingEntity
 
     [HideInInspector]
     private bool isAttacking;
+
+    private bool isBeingAttacked;
+    private bool hasBeenAttacked;
+
+    [HideInInspector]
+    public Vector2 input;
 
     PlayerController controller;
 
@@ -56,7 +63,7 @@ public class Player : LivingEntity
             animator.SetBool("isJumping", false);
         }
 
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (Input.GetKeyDown(KeyCode.Space) && controller.collisionInfo.below)
         {
@@ -81,8 +88,12 @@ public class Player : LivingEntity
             spriteRenderer.flipX = false;
         }
 
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        velocity.x = targetVelocityX;
+
+        if (!isBeingAttacked) {
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+            velocity.x = targetVelocityX;
+        } 
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
@@ -91,21 +102,35 @@ public class Player : LivingEntity
         health = (int)player_healthBar.healthSlider.value; //the slider value is the health
      }
 
-    public override void TakeDamage(int damage){
-        base.TakeDamage(damage);
-        isDying = true;
-        player_healthBar.healthSlider.value = health;
-        StartCoroutine(ResetisDying());
-        if (health <= 0)
+    public void TakeDamage(int damage, Vector2 direction){
+        if (!hasBeenAttacked)
         {
-            SceneManager.LoadSceneAsync("GameOver");
+            isBeingAttacked = true;
+            base.TakeDamage(damage);
+            float knockbackForce = 1.5f;
+            velocity = direction * knockbackForce;
+            animator.SetTrigger("isHurt");
+            isDying = true;
+            player_healthBar.healthSlider.value = health;
+            if (health <= 0)
+            {
+                SceneManager.LoadSceneAsync("GameOver");
+            }
+            StartCoroutine(invicibility());
+            StartCoroutine(ResetisDying());
         }
     }
 
-     private IEnumerator ResetisDying(){
-         yield return new WaitForSeconds(dieFlash);
-         isDying = false;
+    private IEnumerator ResetisDying(){
+        yield return new WaitForSeconds(dieFlash);
+        isDying = false;
+        isBeingAttacked = false;
+    }
 
-     }
-
+    IEnumerator invicibility()
+    {
+        hasBeenAttacked = true;
+        yield return new WaitForSeconds(2f);
+        hasBeenAttacked = false;
+    }
 }

@@ -13,7 +13,6 @@ public class IdleBehaviour : StateMachineBehaviour
     {
         if (PlayerAttack.Instance.isAttacking)
         {
-            Debug.Log("Attack1Start");
             PlayerAttack.Instance.animator.Play("Attack");
         }
     }
@@ -22,7 +21,6 @@ public class IdleBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PlayerAttack.Instance.isAttacking = false; 
-        Debug.Log("Attack1End");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
