@@ -302,4 +302,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7897271519088795366}
   middlePoint: {fileID: 4921289821210233602}
   damage: 20
+  animator: {fileID: 3994281567847998828}
   isBeingAttacked: 0
+  isFinalAttack: 0

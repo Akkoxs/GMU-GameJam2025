@@ -12,7 +12,7 @@ public class Player : LivingEntity
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
-    float moveSpeed = 2;
+    public float moveSpeed = 1;
 
     float gravity;
     float jumpVelocity;
@@ -32,6 +32,8 @@ public class Player : LivingEntity
 
     [HideInInspector]
     private bool isAttacking;
+
+    private bool isBeingAttacked;
 
     PlayerController controller;
 
@@ -81,8 +83,12 @@ public class Player : LivingEntity
             spriteRenderer.flipX = false;
         }
 
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        velocity.x = targetVelocityX;
+
+        if (!isBeingAttacked) {
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+            velocity.x = targetVelocityX;
+        }
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
@@ -91,8 +97,11 @@ public class Player : LivingEntity
         health = (int)player_healthBar.healthSlider.value; //the slider value is the health
      }
 
-    public override void TakeDamage(int damage){
+    public void TakeDamage(int damage, Vector2 direction){
+        isBeingAttacked = true;
         base.TakeDamage(damage);
+        float knockbackForce = 3f;
+        velocity = direction * knockbackForce;
         isDying = true;
         player_healthBar.healthSlider.value = health;
         StartCoroutine(ResetisDying());
@@ -100,12 +109,12 @@ public class Player : LivingEntity
         {
             SceneManager.LoadSceneAsync("GameOver");
         }
+        isBeingAttacked = false;
     }
 
-     private IEnumerator ResetisDying(){
+    private IEnumerator ResetisDying(){
          yield return new WaitForSeconds(dieFlash);
          isDying = false;
-
-     }
-
+        isBeingAttacked = false;
+    }
 }

@@ -21,10 +21,14 @@ public class Enemy : LivingEntity
     private Rigidbody2D rb;
     private bool isGrounded = false;
     private long lastAttackTime = 0;
+    public Animator animator;
     public bool isBeingAttacked;
+    public bool isFinalAttack;
+    private bool canMove;
 
     public override void Start()
     {
+        canMove = true;
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindFirstObjectByType<GameManager>();
@@ -44,12 +48,12 @@ public class Enemy : LivingEntity
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetFloat("Speed", horizontalSpeed);
         animator.SetBool("IsJumping", !isGrounded);
-        if (!isBeingAttacked)
+        if (!isBeingAttacked && canMove)
         {
             MoveTowardsTarget();
         } else if (isBeingAttacked)
         {
-            StartCoroutine(Wait());
+            Wait();
         }
 
         AttackIfTargetInRange();
@@ -78,7 +82,7 @@ public class Enemy : LivingEntity
         lastAttackTime = currentTime;
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetBool("IsAttacking", true);
-        Debug.Log("Attack time: " + currentTime);
+        //Debug.Log("Attack time: " + currentTime);
 
         // This animation is fucked, idk whats going on tbh.
         Invoke(nameof(ExecuteAttack), 670 / 2 / 1000f);
@@ -87,12 +91,12 @@ public class Enemy : LivingEntity
 
     void ExecuteAttack() {
         long currentTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
-        Debug.Log("Execute time: " + currentTime);
+        //Debug.Log("Execute time: " + currentTime);
 
         Vector3 target = gameManager.player.middlePoint.position;
         float distanceToTarget = Vector2.Distance(transform.position, target);
         if (distanceToTarget <= 1) {
-            gameManager.player.TakeDamage(damage);
+            gameManager.player.TakeDamage(damage, rb.linearVelocity.normalized);
             return;
         }
 
@@ -109,7 +113,7 @@ public class Enemy : LivingEntity
 
     void ResetAttackAnimation() {
         long currentTime = System.DateTimeOffset.Now.ToUnixTimeMilliseconds();
-        Debug.Log("Reset time: " + currentTime);
+        //Debug.Log("Reset time: " + currentTime);
 
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetBool("IsAttacking", false);
@@ -197,13 +201,25 @@ public class Enemy : LivingEntity
         }
     }
 
-    IEnumerator Wait()
+    private void Wait()
     {
-        rb.linearVelocity = new Vector2(0, 0);
-        rb.AddForce(new Vector2(-gameManager.player.targetVelocityX * 1.5f, 0), ForceMode2D.Impulse);
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
+        //rb.linearVelocity = new Vector2(0, 0);
+        animator.SetTrigger("isAttacked");
+        canMove = false;
+        if (isFinalAttack)
+        {
+            rb.AddForce(new Vector2(/*-gameManager.player.targetVelocityX * 1.5f * */Mathf.Sign(gameManager.player.targetVelocityX) * 5f, 0), ForceMode2D.Impulse);
+        } else
+        {
+            rb.AddForce(new Vector2(Mathf.Sign(gameManager.player.targetVelocityX) * 3f, 0), ForceMode2D.Impulse);
+        }
         isBeingAttacked = false;
-        spriteRenderer.color = Color.white;
+        StartCoroutine(WaitToMove());
+    }
+
+    IEnumerator WaitToMove()
+    {
+        yield return new WaitForSeconds(0.1f);
+        canMove = true;
     }
 }
