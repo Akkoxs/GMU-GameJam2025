@@ -140,8 +140,8 @@ GameObject:
   - component: {fileID: 4116300555853308815}
   - component: {fileID: 3948285772128578847}
   - component: {fileID: 5414036605410297711}
+  - component: {fileID: 276050179564036142}
   - component: {fileID: 8706872932078160576}
-  - component: {fileID: 2993438203437609343}
   - component: {fileID: 6947088906106810379}
   m_Layer: 0
   m_Name: Player
@@ -378,6 +378,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &276050179564036142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166706207906885797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12ea65a144d18549827ca24895f6082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8706872932078160576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,19 +404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_healthBar: {fileID: 0}
   hp: 23
---- !u!114 &2993438203437609343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166706207906885797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bfe6c98112d4aa4583c54517d9e9a63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
 --- !u!114 &6947088906106810379
 MonoBehaviour:
   m_ObjectHideFlags: 0

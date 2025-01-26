@@ -50,15 +50,7 @@ public class CamSelector : MonoBehaviour // pans the camera to focus during game
         else{
             Debug.Log("Camera Selector does not know where to go.");
         }
-
-        // //if the switch criteria coroutine is not running, start it, if it is already, stop it?
-        // if (switchCoroutine == null){
-        //     if (switchCoroutine != null){
-        //         StopCoroutine(switchCoroutine);
-        //     }
-        //     switchCoroutine = StartCoroutine(NeedSwitch(targetCam));
-        // }
-
+        
         switchCoroutine = StartCoroutine(NeedSwitch(targetCam));
 
         //move camAnchor to the targetCam if needSwitch is true 

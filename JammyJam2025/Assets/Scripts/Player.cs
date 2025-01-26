@@ -79,8 +79,6 @@ public class Player : LivingEntity
         velocity.x = targetVelocityX;
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-
-        //PlayerHealth();
     }
 
 
