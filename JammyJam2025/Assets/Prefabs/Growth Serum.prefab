@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8405323567477881680}
   - component: {fileID: 888003505537307330}
   - component: {fileID: 1949197088241282598}
+  - component: {fileID: 3074016692187055259}
   m_Layer: 0
   m_Name: Growth Serum
   m_TagString: Untagged
@@ -149,4 +150,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickedUpSerum: 0
   droppedOffSerum: 0
+  sidePicker: 0
+  LHSnewPos: 0
+  RHSnewPos: 0
   baseMushroomTrigger: {fileID: 0}
+  inventorySerum: {fileID: 0}
+  LHS_maxSpawn: 0
+  LHS_minSpawn: -2.264
+  RHS_minSpawn: 1.844
+  RHS_maxSpawn: 5.327
+--- !u!95 &3074016692187055259
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7960112154512427116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 068894e6df407514783986aa23764c88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
