@@ -48,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
                     e.isFinalAttack = true;
                 }
                     e.isBeingAttacked = true;
-                    e.TakeDamage(30);
+                    e.TakeDamage(5);
                 
                 //enemy.GetComponentInParent<Rigidbody2D>().linearVelocity = new Vector2(100000, 0);
             }

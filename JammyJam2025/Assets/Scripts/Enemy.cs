@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class Enemy : LivingEntity
 
     public Transform middlePoint;
     public int damage = 25; //changed from 50
+    public int shroomDamage = 5;
 
     private Rigidbody2D rb;
     private bool isGrounded = false;
@@ -25,6 +27,7 @@ public class Enemy : LivingEntity
     public bool isBeingAttacked;
     public bool isFinalAttack;
     private bool canMove;
+    private bool canAttack = true;
 
     public override void Start()
     {
@@ -43,7 +46,7 @@ public class Enemy : LivingEntity
 
         float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
         // Flip sprite if walking left.
-        spriteRenderer.flipX = rb.linearVelocity.x < 0.01;
+        spriteRenderer.flipX = rb.linearVelocity.x < 0;
 
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetFloat("Speed", horizontalSpeed);
@@ -51,12 +54,12 @@ public class Enemy : LivingEntity
         if (!isBeingAttacked && canMove)
         {
             MoveTowardsTarget();
-        } else if (isBeingAttacked)
-        {
-            Wait();
         }
 
-        AttackIfTargetInRange();
+        if (!isBeingAttacked && canAttack)
+        {
+            AttackIfTargetInRange();
+        }
     }
 
     void AttackIfTargetInRange() {
@@ -81,12 +84,12 @@ public class Enemy : LivingEntity
 
         lastAttackTime = currentTime;
         Animator animator = spriteRenderer.GetComponent<Animator>();
-        animator.SetBool("IsAttacking", true);
+        //animator.SetBool("IsAttacking", true);
         //Debug.Log("Attack time: " + currentTime);
 
         // This animation is fucked, idk whats going on tbh.
         Invoke(nameof(ExecuteAttack), 670 / 2 / 1000f);
-        Invoke(nameof(ResetAttackAnimation), 670 / 1000f);
+        //Invoke(nameof(ResetAttackAnimation), 670 / 1000f);
     }
 
     void ExecuteAttack() {
@@ -96,15 +99,16 @@ public class Enemy : LivingEntity
         Vector3 target = gameManager.player.middlePoint.position;
         float distanceToTarget = Vector2.Distance(transform.position, target);
         if (distanceToTarget <= 1) {
-            gameManager.player.TakeDamage(damage, rb.linearVelocity.normalized);
-            return;
+            animator.SetTrigger("IsAttackingT");
+            //return;
         }
 
         target = gameManager.shroomaloom.middlePoint.position;
         distanceToTarget = Mathf.Abs(target.x - middlePoint.position.x);
         if (distanceToTarget <= 1.5) {
-            gameManager.shroomaloom.TakeDamage(damage);
-        }
+            animator.SetTrigger("IsAttackingT");
+            //Invoke(nameof(ResetAttackAnimation), 670 / 1000f);
+        } 
 
         // TODO: The above is kinda unfair, LOS check?
         // Vector2 direction = (entity.middlePoint.position - middlePoint.transform.position).normalized;
@@ -117,6 +121,7 @@ public class Enemy : LivingEntity
 
         Animator animator = spriteRenderer.GetComponent<Animator>();
         animator.SetBool("IsAttacking", false);
+        StartCoroutine(attackTimer());
     }
 
     private bool HasLineOfSight()
@@ -187,9 +192,38 @@ public class Enemy : LivingEntity
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Vector2 attack = new();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (spriteRenderer.flipX)
+            {
+                attack = new Vector2(-1, 0);
+            } else if (!spriteRenderer.flipX)
+            {
+                attack = new Vector2(1, 0);
+            }
+
+            gameManager.player.TakeDamage(damage, attack);
+            HitStop.Instance.Stop(0.15f);
+            Debug.Log("rb linear: " + attack);
+            canAttack = false;
+            StartCoroutine(attackTimer());
+        }
+
+        if (collision.gameObject.CompareTag("Shroomaloom"))
+        {
+            gameManager.shroomaloom.TakeDamage(shroomDamage);
+            canAttack = false;
+            StartCoroutine(attackTimer());
+        }
+    }
+     
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
+        Wait();
 
         if (health <= 0)
         {
@@ -203,17 +237,29 @@ public class Enemy : LivingEntity
 
     private void Wait()
     {
-        //rb.linearVelocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         animator.SetTrigger("isAttacked");
         canMove = false;
+
+        Vector2 attack = new();
+        if (gameManager.player.spriteRenderer.flipX)
+        {
+            attack = new Vector2(-1, 0);
+        }
+        else if (!gameManager.player.spriteRenderer.flipX)
+        {
+            attack = new Vector2(1, 0);
+        }
+
         if (isFinalAttack)
         {
-            rb.AddForce(new Vector2(/*-gameManager.player.targetVelocityX * 1.5f * */Mathf.Sign(gameManager.player.targetVelocityX) * 5f, 0), ForceMode2D.Impulse);
+            rb.AddForce(attack * 4f, ForceMode2D.Impulse);
+            isFinalAttack = false;
         } else
         {
-            rb.AddForce(new Vector2(Mathf.Sign(gameManager.player.targetVelocityX) * 3f, 0), ForceMode2D.Impulse);
+            rb.AddForce(attack * 2f, ForceMode2D.Impulse);
         }
-        isBeingAttacked = false;
+
         StartCoroutine(WaitToMove());
     }
 
@@ -221,5 +267,12 @@ public class Enemy : LivingEntity
     {
         yield return new WaitForSeconds(0.1f);
         canMove = true;
+        isBeingAttacked = false;
+    }
+
+    IEnumerator attackTimer()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        canAttack = true;
     }
 }
