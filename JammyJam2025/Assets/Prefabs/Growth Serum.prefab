@@ -124,7 +124,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.009999999, y: 0.15}
+  m_Offset: {x: -0.007861711, y: 0.2148611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.62499994, y: -1.375}
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.08, y: 0.07999999}
+  m_Size: {x: 0.08427657, y: 0.20972216}
   m_EdgeRadius: 0
 --- !u!114 &1949197088241282598
 MonoBehaviour:
@@ -151,10 +151,12 @@ MonoBehaviour:
   pickedUpSerum: 0
   droppedOffSerum: 0
   sidePicker: 0
+  serumCount: 0
   LHSnewPos: 0
   RHSnewPos: 0
   baseMushroomTrigger: {fileID: 0}
   inventorySerum: {fileID: 0}
+  GM: {fileID: 0}
   LHS_maxSpawn: 0
   LHS_minSpawn: -2.264
   RHS_minSpawn: 1.844

@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpawnPlatform : MonoBehaviour
 {
     [SerializeField] public Shroomaloom shroom;
-    [SerializeField] public int currPlatform = 0;
+    [SerializeField] public int currPlatform = -1;
 
     [Header("Platform Settings")]
     public GameObject[] platforms;

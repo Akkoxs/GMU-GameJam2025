@@ -38,26 +38,42 @@ public class GrowthSerum : MonoBehaviour
         if (droppedOffSerum)
         {
             inventorySerum.enabled = false;
-            //GM.currentWave++;
             sidePicker = Random.Range(1,3);
             LHSnewPos = Random.Range(LHS_minSpawn, LHS_maxSpawn);
             RHSnewPos = Random.Range(RHS_minSpawn, RHS_maxSpawn);
             StartCoroutine(Wait());
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !pickedUpSerum)
         {
-            pickedUpSerum = true;
-            serumCount++;
+
             if(serumCount == 1){
-                GM.FirstWave();
+                pickedUpSerum = true;
+                serumCount++;
+                StartCoroutine(WaitFor2SecAndSpawn());
+                inventorySerum.enabled = true;
+                spriteRenderer.enabled = false;
+                baseMushroomTrigger.SetActive(true);
             }
-            inventorySerum.enabled = true;
-            baseMushroomTrigger.SetActive(true);
-            spriteRenderer.enabled = false;
+
+              else if(serumCount == 9){ //WHY WONT IT WORK WHY WHY WHY
+                pickedUpSerum = false;
+                inventorySerum.enabled = false;
+                spriteRenderer.enabled = false;
+                baseMushroomTrigger.SetActive(false);
+              }
+
+            else{
+                pickedUpSerum = true;
+                serumCount++;
+                inventorySerum.enabled = true;
+                spriteRenderer.enabled = false;
+                baseMushroomTrigger.SetActive(true);
+            }
         }
     }
 
@@ -67,6 +83,7 @@ public class GrowthSerum : MonoBehaviour
         RandomSpawner();
         pickedUpSerum = false;
         droppedOffSerum = false;
+        inventorySerum.enabled = false;
         baseMushroomTrigger.SetActive(false);
         spriteRenderer.enabled = true;
     }
@@ -81,6 +98,8 @@ public class GrowthSerum : MonoBehaviour
         }
     }
 
-
-
+    public IEnumerator WaitFor2SecAndSpawn(){
+        yield return new WaitForSecondsRealtime(2);
+        GM.FirstWave();
+    }
 }

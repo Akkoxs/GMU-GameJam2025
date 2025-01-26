@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4921289821210233602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mushroom Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8900921508108842474}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mushroom Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 7897271519088795366}
   - component: {fileID: 8582873883393104838}
   - component: {fileID: 3994281567847998828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mushroom Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 5482901019347837413}
   - component: {fileID: 8513954090579913507}
   - component: {fileID: 537841869822414998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MushroomEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
