@@ -18,10 +18,9 @@ MonoBehaviour:
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
     rid: 3534298112087556180
-  m_OverrideGlobalSceneList: 1
+  m_OverrideGlobalSceneList: 0
   m_Scenes: []
-  m_ScriptingDefines:
-  - 
+  m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
     - line: '| PlayerSettings:'
@@ -35,8 +34,8 @@ MonoBehaviour:
     - line: '|   targetDevice: 2'
     - line: '|   useOnDemandResources: 0'
     - line: '|   accelerometerFrequency: 60'
-    - line: '|   companyName: Team CLKZ PLUS J'
-    - line: '|   productName: MYCO'
+    - line: '|   companyName: Team CLKZ + J'
+    - line: '|   productName: Shroomaloom'
     - line: '|   defaultCursor: {instanceID: 0}'
     - line: '|   cursorHotspot: {x: 0, y: 0}'
     - line: '|   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b:

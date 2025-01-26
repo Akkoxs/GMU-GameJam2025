@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
 
     public int currentWave = 0;
     private int maxEnemiesPerWave = 4;
-    private int enemiesSpawned = 1;
-    private int enemiesAlive = 1;
+    private int enemiesSpawned = 0;
+    private int enemiesAlive = 0;
 
     // void Start()
     // {
@@ -30,15 +30,15 @@ public class GameManager : MonoBehaviour
     void StartNextWave()
     {
         currentWave++;
-        enemiesSpawned = 1;
-        enemiesAlive = 1;
+        enemiesSpawned = 0;
+        enemiesAlive = 0;
         maxEnemiesPerWave += currentWave;
         StartCoroutine(SpawnEnemies());
     }
 
     IEnumerator SpawnEnemies()
     {
-        while (enemiesSpawned <= maxEnemiesPerWave)
+        while (enemiesSpawned != maxEnemiesPerWave)
         {
             SpawnEnemy();
             enemiesSpawned++;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public void OnEnemyKilled()
     {
         enemiesAlive--;
-        if (enemiesAlive <= 1 && (enemiesSpawned >= maxEnemiesPerWave)) //when there is no one alive, and we spawned all enemies, start next wave.
+        if (enemiesAlive <= 0 && enemiesSpawned >= maxEnemiesPerWave) //when there is no one alive, and we spawned all enemies, start next wave.
         {
             StartNextWave();
         }

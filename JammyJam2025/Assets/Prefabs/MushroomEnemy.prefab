@@ -472,8 +472,8 @@ Transform:
   m_GameObject: {fileID: 9213440645240638792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2546, y: -3.439, z: 0}
-  m_LocalScale: {x: 0.21875, y: 0.26039064, z: 0.5}
+  m_LocalPosition: {x: 7.249, y: -3.6163, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5466061385735453779}
@@ -537,11 +537,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   spriteRenderer: {fileID: 7897271519088795366}
-  middlePoint: {fileID: 0}
+  middlePoint: {fileID: 4921289821210233602}
   damage: 20
   shroomDamage: 5
   animator: {fileID: 3994281567847998828}
   isBeingAttacked: 0
   isFinalAttack: 0
-  isHeavyAttack: 0
   vfxAnimator: {fileID: 3920162693041377214}

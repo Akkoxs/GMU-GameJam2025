@@ -219,7 +219,6 @@ public class Enemy : LivingEntity
 
         if (collision.gameObject.CompareTag("Shroomaloom"))
         {
-            Debug.Log("FoundShroom!");
             gameManager.shroomaloom.TakeDamage(shroomDamage);
             canAttack = false;
             StartCoroutine(attackTimer());
@@ -229,7 +228,6 @@ public class Enemy : LivingEntity
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        Debug.Log("Did damage!");
         Wait();
 
         if (health <= 0)

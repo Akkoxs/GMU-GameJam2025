@@ -17,7 +17,6 @@ public class GrowthSerum : MonoBehaviour
 
     [SerializeField] public Image inventorySerum; 
     public GameManager GM;
-    public Shroomaloom shroom;
 
     [SerializeField] public float LHS_maxSpawn;
     [SerializeField] public float LHS_minSpawn;
@@ -55,19 +54,18 @@ public class GrowthSerum : MonoBehaviour
             if(serumCount == 1){
                 pickedUpSerum = true;
                 serumCount++;
-                //StartCoroutine(WaitFor2SecAndSpawn());
-                GM.FirstWave();
+                StartCoroutine(WaitFor2SecAndSpawn());
                 inventorySerum.enabled = true;
                 spriteRenderer.enabled = false;
                 baseMushroomTrigger.SetActive(true);
             }
 
-            //   else if(serumCount == 9){ //WHY WONT IT WORK WHY WHY WHY
-            //     pickedUpSerum = false;
-            //     inventorySerum.enabled = false;
-            //     spriteRenderer.enabled = false;
-            //     baseMushroomTrigger.SetActive(false);
-            //   }
+              else if(serumCount == 9){ //WHY WONT IT WORK WHY WHY WHY
+                pickedUpSerum = false;
+                inventorySerum.enabled = false;
+                spriteRenderer.enabled = false;
+                baseMushroomTrigger.SetActive(false);
+              }
 
             else{
                 pickedUpSerum = true;
@@ -100,8 +98,8 @@ public class GrowthSerum : MonoBehaviour
         }
     }
 
-    // public IEnumerator WaitFor2SecAndSpawn(){
-    //     yield return new WaitForSecondsRealtime(2);
-    //     GM.FirstWave();
-    // }
+    public IEnumerator WaitFor2SecAndSpawn(){
+        yield return new WaitForSecondsRealtime(2);
+        GM.FirstWave();
+    }
 }
