@@ -1197,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3497001144077713625, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_Size.y
-      value: 0.039211273
+      value: 0.04164791
       objectReference: {fileID: 0}
     - target: {fileID: 3497001144077713625, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_Offset.x
@@ -1205,7 +1205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3497001144077713625, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_Offset.y
-      value: 0.304245
+      value: 0.3054633
       objectReference: {fileID: 0}
     - target: {fileID: 3532579790071135533, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -1447,6 +1447,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9022338511562025418, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+      propertyPath: m_TagString
+      value: Shroomaloom
+      objectReference: {fileID: 0}
     - target: {fileID: 9106529558914438585, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -1465,9 +1469,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 848538684346370086, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+    - {fileID: 3497001144077713625, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9022338511562025418, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2082159053}
   m_SourcePrefab: {fileID: 100100000, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
 --- !u!1001 &549889183
 PrefabInstance:
@@ -1481,13 +1489,17 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 838628282}
+    - target: {fileID: 537841869822414998, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: shroomDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.531633
       objectReference: {fileID: 0}
     - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.3571625
+      value: -6.43
       objectReference: {fileID: 0}
     - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21570,6 +21582,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &722726725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9022338511562025418, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+  m_PrefabInstance: {fileID: 529206379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &765567150
 GameObject:
   m_ObjectHideFlags: 0
@@ -22850,12 +22867,34 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1447950320418759678, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
   m_PrefabInstance: {fileID: 529206379}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 722726725}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33a3f1d924b65a34b8f839e96f213a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &2082159053
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722726725}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2096037424
 GameObject:
   m_ObjectHideFlags: 0
