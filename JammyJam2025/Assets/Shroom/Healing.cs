@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
-public class Healing : MonoBehaviour
+public class Healing : LivingEntity
 {
     [SerializeField] public HealthBar healthBar;
     [SerializeField] public int healthIncVal = 5;
@@ -9,7 +10,6 @@ public class Healing : MonoBehaviour
     [SerializeField] public bool isHealing = false;
 
     private Coroutine healCoroutine;
-
 
     public void OnTriggerEnter2D(Collider2D collider){
         if((collider.gameObject.CompareTag("Player")) && (healCoroutine == null)){

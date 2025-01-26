@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -24,7 +25,10 @@ public class Player : LivingEntity
     private bool facingRight;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-  
+    [SerializeField] public HealthBar player_healthBar; 
+
+    public bool isDying = false; //when youre taking damage lol
+    private float dieFlash = 0.5f; 
 
     [HideInInspector]
     private bool isAttacking;
@@ -33,10 +37,10 @@ public class Player : LivingEntity
 
     public override void Start()
     {
-        base.Start();
+        health = (int)player_healthBar.healthSlider.value; //starting health is whatever the slider is set to
         controller = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+    
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
@@ -44,6 +48,8 @@ public class Player : LivingEntity
 
     void Update()
     {
+        PlayerHP();
+
         if (controller.collisionInfo.above || controller.collisionInfo.below)
         {
             velocity.y = 0;
@@ -81,6 +87,25 @@ public class Player : LivingEntity
         controller.Move(velocity * Time.deltaTime);
     }
 
+    public void PlayerHP(){ // the exact same code as the PlayerHealth.cs file
+        health = (int)player_healthBar.healthSlider.value; //the slider value is the health
+     }
 
+    public override void TakeDamage(int damage){
+        base.TakeDamage(damage);
+        isDying = true;
+        player_healthBar.healthSlider.value = health;
+        StartCoroutine(ResetisDying());
+        if (health <= 0)
+        {
+            SceneManager.LoadSceneAsync("GameOver");
+        }
+    }
+
+     private IEnumerator ResetisDying(){
+         yield return new WaitForSeconds(dieFlash);
+         isDying = false;
+
+     }
 
 }

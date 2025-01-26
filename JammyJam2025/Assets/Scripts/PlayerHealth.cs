@@ -1,15 +1,14 @@
-using Unity.VisualScripting;
-using UnityEngine;
+// using Unity.VisualScripting;
+// using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
-{
-    [SerializeField] public HealthBar player_healthBar; 
-    public float hp;
+// public class PlayerHealth : LivingEntity
+// {
+//     [SerializeField] public HealthBar player_healthBar; 
 
-    void Update(){
-        PlayerHP();
-    }
-    public void PlayerHP(){
-        hp = player_healthBar.healthSlider.value;
-    }
-}
+//     void Update(){
+//         PlayerHP();
+//     }
+//     public void PlayerHP(){
+//         health = (int)player_healthBar.healthSlider.value;
+//     }
+// }

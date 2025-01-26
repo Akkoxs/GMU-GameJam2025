@@ -1,16 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour //livingentity?
 {
     [SerializeField] public Slider healthSlider;
 
     public void SetMaxHealth(int health){
         healthSlider.maxValue = health;
-        healthSlider.value = health; //starting val is max 
+        healthSlider.value = health;
+
     }
     public void SetHealth(int health){
         healthSlider.value = health;
+
     }
 
 }

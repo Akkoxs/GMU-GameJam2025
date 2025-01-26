@@ -86,7 +86,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 19
+  m_Value: 23
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -515,9 +515,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 1
-  m_Value: 66
+  m_Value: 448
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -533,8 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1a4afc5b56de949b443fd72fbd152e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 93168864454526645}
-  shroom: {fileID: 0}
+  shroomhealthSlider: {fileID: 0}
 --- !u!1 &9079358108254937037
 GameObject:
   m_ObjectHideFlags: 0

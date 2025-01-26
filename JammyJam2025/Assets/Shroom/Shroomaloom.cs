@@ -22,21 +22,19 @@ public class Shroomaloom : LivingEntity
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void Start(){
+    public override void Start(){ //was override
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         trans = GetComponent<Transform>();
-        maxHealth = 500;
     }
 
     // Update is called once per frame
     void Update(){
-
-    if(serumDelivery){
-        platformSpawn = true;
-        SerumDelivery();
-    }    
-
+        healthBar.shroomhealthSlider.value = health;
+        if(serumDelivery){
+            platformSpawn = true;
+            SerumDelivery();
+        }    
     }
 
     public void SerumDelivery(){
@@ -64,8 +62,6 @@ public class Shroomaloom : LivingEntity
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-
-        healthBar.healthSlider.value = health;
         if (health <= 0)
         {
             SceneManager.LoadSceneAsync("GameOver");

@@ -77,11 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5af2885ae2f4d48aad447ecaf8dde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  player: {fileID: 0}
+  shroomaloom: {fileID: 0}
   spawnPoint1: {fileID: 4886520105856169475}
   spawnPoint2: {fileID: 4757142049532303696}
   enemyPrefab: {fileID: 0}
-  spawnInterval: 2
+  spawnInterval: 500
 --- !u!1 &8958786922446389826
 GameObject:
   m_ObjectHideFlags: 0

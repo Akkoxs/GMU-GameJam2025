@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 3948285772128578847}
   - component: {fileID: 5414036605410297711}
   - component: {fileID: 276050179564036142}
-  - component: {fileID: 8706872932078160576}
   - component: {fileID: 6947088906106810379}
   m_Layer: 0
   m_Name: Player
@@ -338,6 +337,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   targetVelocityX: 0
   animator: {fileID: 5414036605410297711}
+  player_healthBar: {fileID: 0}
 --- !u!114 &3948285772128578847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,20 +390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12ea65a144d18549827ca24895f6082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8706872932078160576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166706207906885797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce272f9917a57542b1b6ba4d7a32129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_healthBar: {fileID: 0}
-  hp: 23
+  healthChangeAnimationTime: 0.1
+  healthBar: {fileID: 0}
+  healingScript: {fileID: 0}
+  isChanging: 0
+  healthFill: {fileID: 0}
+  ogColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &6947088906106810379
 MonoBehaviour:
   m_ObjectHideFlags: 0

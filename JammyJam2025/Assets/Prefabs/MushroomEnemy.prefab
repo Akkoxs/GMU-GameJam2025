@@ -301,3 +301,5 @@ MonoBehaviour:
     m_Bits: 8
   spriteRenderer: {fileID: 7897271519088795366}
   middlePoint: {fileID: 4921289821210233602}
+  damage: 20
+  isBeingAttacked: 0

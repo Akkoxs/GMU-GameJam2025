@@ -16,7 +16,7 @@ public class Enemy : LivingEntity
     public SpriteRenderer spriteRenderer;
 
     public Transform middlePoint;
-    public int damage = 50;
+    public int damage = 25; //changed from 50
 
     private Rigidbody2D rb;
     private bool isGrounded = false;
@@ -60,6 +60,7 @@ public class Enemy : LivingEntity
         float distanceToTarget = Vector2.Distance(middlePoint.position, target);
         if (distanceToTarget <= 1.5) {
             StartAttack();
+            //gameManager.player.isDying = true;
             return;
         }
 

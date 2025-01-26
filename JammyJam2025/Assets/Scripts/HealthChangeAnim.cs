@@ -9,6 +9,7 @@ public class HealthChangeAnim : MonoBehaviour
     [SerializeField] public float healthChangeAnimationTime = 0.1f;
     [SerializeField] public HealthBar healthBar; 
     [SerializeField] public Healing healingScript;
+    [SerializeField] public Player player;
     [SerializeField] public bool isChanging;
 
     [SerializeField] public Image healthFill; 
@@ -27,21 +28,22 @@ public class HealthChangeAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(healingScript.isHealing && (healthChangeCorout == null)){ //and eventually isTakingDmg 
+        if((healingScript.isHealing || player.isDying) && (healthChangeCorout == null)){
             isChanging = true;
             healthChangeCorout = StartCoroutine(HealthChangeCorout());
         }
-        else if(!healingScript.isHealing && (healthChangeCorout != null)){ //if its runing, stop the coroutine when youre off healing pad 
+        else if((!healingScript.isHealing && !player.isDying) && (healthChangeCorout != null)){ //if its runing, stop the coroutine when youre off healing pad 
             StopCoroutine(healthChangeCorout);
             healthFill.color = ogColor;
             healthChangeCorout = null;
             isChanging = false;
         }
-
-        //check if the healthbar is changing 
-        // if healthbar is changing -> ischanging = yes -> call the coroutine
-        // else nah
-        // gotta do that thing to check if its alr running and shit 
+        // else if (!player.isDying && (healthChangeCorout != null)){
+        //     StopCoroutine(healthChangeCorout);
+        //     healthFill.color = ogColor;
+        //     healthChangeCorout = null;
+        //     isChanging = false;
+        // }
     }
 
     public IEnumerator HealthChangeCorout(){

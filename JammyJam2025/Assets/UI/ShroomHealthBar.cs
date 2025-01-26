@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class ShroomHealthBar : MonoBehaviour
 {
-    [SerializeField] public Slider healthSlider;
-    [SerializeField] public Shroomaloom shroom;
+    [SerializeField] public Slider shroomhealthSlider;
+
     public void SetMaxHealth(int health){
-        healthSlider.maxValue = health;
-        healthSlider.value = health; //starting val is max 
+        shroomhealthSlider.maxValue = health;
+        shroomhealthSlider.value = health; //starting val is max 
     }
     public void SetHealth(int health){
-        healthSlider.value = health;
+        shroomhealthSlider.value = health;
     }
 }
