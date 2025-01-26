@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757142049532303696, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.764
+      value: 4.695
       objectReference: {fileID: 0}
     - target: {fileID: 4757142049532303696, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -268,11 +268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4886520105856169475, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.038
+      value: -7.221
       objectReference: {fileID: 0}
     - target: {fileID: 4886520105856169475, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.432
+      value: -4.599
       objectReference: {fileID: 0}
     - target: {fileID: 7506906550770159724, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: serum
@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 2082159048}
     - target: {fileID: 7506906550770159724, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: spawnInterval
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7506906550770159724, guid: 2234cc020bfa36a46ae9bc44721e1cd7, type: 3}
       propertyPath: shroomaloomData
@@ -1469,6 +1469,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7e5bafeb6cf4846ba686610152dacb, type: 3}
+--- !u!1001 &549889183
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 537841869822414998, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 838628282}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.531633
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.3571625
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482901019347837413, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213440645240638792, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
+      propertyPath: m_Name
+      value: MushroomEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93057afadca10ab459a7efc5244a0b04, type: 3}
 --- !u!1 &565559033
 GameObject:
   m_ObjectHideFlags: 0
@@ -23100,3 +23161,4 @@ SceneRoots:
   - {fileID: 123947081}
   - {fileID: 499997682}
   - {fileID: 258120009}
+  - {fileID: 549889183}

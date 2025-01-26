@@ -15,12 +15,17 @@ public class IdleBehaviour : StateMachineBehaviour
         {
             PlayerAttack.Instance.animator.Play("Attack");
         }
+
+        if (PlayerAttack.Instance.isHeavyAttacking) {
+            PlayerAttack.Instance.animator.Play("HeavyAttack");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerAttack.Instance.isAttacking = false; 
+        PlayerAttack.Instance.isAttacking = false;
+        PlayerAttack.Instance.isHeavyAttacking = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

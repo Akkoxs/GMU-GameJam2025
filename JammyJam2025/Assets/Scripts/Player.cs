@@ -130,7 +130,7 @@ public class Player : LivingEntity
     IEnumerator invicibility()
     {
         hasBeenAttacked = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         hasBeenAttacked = false;
     }
 }

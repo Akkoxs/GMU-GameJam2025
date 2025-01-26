@@ -24,10 +24,15 @@ public class Enemy : LivingEntity
     private bool isGrounded = false;
     private long lastAttackTime = 0;
     public Animator animator;
+    [HideInInspector]
     public bool isBeingAttacked;
+    [HideInInspector]
     public bool isFinalAttack;
+    [HideInInspector]
+    public bool isHeavyAttack;
     private bool canMove;
     private bool canAttack = true;
+    public Animator vfxAnimator;
 
     public override void Start()
     {
@@ -251,10 +256,16 @@ public class Enemy : LivingEntity
             attack = new Vector2(1, 0);
         }
 
+        vfxAnimator.SetTrigger("hit");
+
         if (isFinalAttack)
         {
             rb.AddForce(attack * 4f, ForceMode2D.Impulse);
             isFinalAttack = false;
+        } else if (isHeavyAttack)
+        {
+            rb.AddForce(attack * 5f, ForceMode2D.Impulse);
+            isHeavyAttack = false;
         } else
         {
             rb.AddForce(attack * 2f, ForceMode2D.Impulse);
@@ -265,7 +276,7 @@ public class Enemy : LivingEntity
 
     IEnumerator WaitToMove()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         canMove = true;
         isBeingAttacked = false;
     }
