@@ -212,7 +212,6 @@ public class Enemy : LivingEntity
 
             gameManager.player.TakeDamage(damage, attack);
             HitStop.Instance.Stop(0.15f);
-            Debug.Log("rb linear: " + attack);
             canAttack = false;
             StartCoroutine(attackTimer());
         }
