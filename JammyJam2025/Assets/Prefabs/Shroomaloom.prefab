@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6313700445109483055}
   m_Layer: 0
   m_Name: mushstem 1 (14)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6819096485042880735}
   m_Layer: 0
   m_Name: mushstem 1 (11)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 9106529558914438585}
   m_Layer: 0
   m_Name: mushstem 1 (28)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 375538466809872511}
   m_Layer: 0
   m_Name: mushstem 1 (35)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 1925407740508442226}
   m_Layer: 0
   m_Name: mushstem 1 (15)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 3894638906572334759}
   m_Layer: 0
   m_Name: mushstem 1 (22)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 2961464986272041953}
   m_Layer: 0
   m_Name: mushstem 1 (34)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 2174358172903513392}
   m_Layer: 0
   m_Name: mushstem 1 (25)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 6284226632229053796}
   m_Layer: 0
   m_Name: mushstem 1 (27)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 7293629740594550566}
   m_Layer: 0
   m_Name: mushstem 1 (18)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 1972805739532329046}
   m_Layer: 0
   m_Name: mushstem 1 (38)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 181433528419298597}
   m_Layer: 0
   m_Name: mushstem 1 (19)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 7247979693875741891}
   m_Layer: 0
   m_Name: mushstem 1 (6)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 7504172282318808256}
   m_Layer: 0
   m_Name: mushstem 1 (8)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 4723007915400931475}
   m_Layer: 0
   m_Name: mushstem 1
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 1977241967491725426}
   m_Layer: 0
   m_Name: mushstem 1 (21)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 6475796423969436508}
   m_Layer: 0
   m_Name: mushcap
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 4532704925397468541}
   m_Layer: 0
   m_Name: mushstem 1 (2)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 1432624104652463580}
   m_Layer: 0
   m_Name: mushstem 1 (10)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 1813012764957375128}
   m_Layer: 0
   m_Name: mushstem 1 (3)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1785,7 +1785,7 @@ GameObject:
   - component: {fileID: 1907101689927098849}
   m_Layer: 0
   m_Name: mushstem 1 (17)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1872,7 +1872,7 @@ GameObject:
   - component: {fileID: 6790566768814410195}
   m_Layer: 0
   m_Name: mushstem 1 (7)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1959,7 +1959,7 @@ GameObject:
   - component: {fileID: 4566173540191707838}
   m_Layer: 0
   m_Name: mushstem 1 (20)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 4947250093177808008}
   m_Layer: 0
   m_Name: mushstem 1 (4)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 841526697925745531}
   m_Layer: 0
   m_Name: mushstem 1 (23)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2220,7 +2220,7 @@ GameObject:
   - component: {fileID: 1948516532517254726}
   m_Layer: 0
   m_Name: mushstem 1 (36)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2307,7 +2307,7 @@ GameObject:
   - component: {fileID: 1613691550262939020}
   m_Layer: 0
   m_Name: mushstem 1 (31)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2394,7 +2394,7 @@ GameObject:
   - component: {fileID: 532174891320289312}
   m_Layer: 0
   m_Name: mushstem 1 (5)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2481,7 +2481,7 @@ GameObject:
   - component: {fileID: 5792941352816652439}
   m_Layer: 0
   m_Name: mushstem 1 (13)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2568,7 +2568,7 @@ GameObject:
   - component: {fileID: 8005416163862422445}
   m_Layer: 0
   m_Name: mushstem 1 (29)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2655,7 +2655,7 @@ GameObject:
   - component: {fileID: 4781943634968359764}
   m_Layer: 0
   m_Name: mushstem 1 (1)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 236956603289140498}
   m_Layer: 0
   m_Name: mushstem 1 (32)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2860,7 +2860,7 @@ GameObject:
   - component: {fileID: 7218484054735635371}
   m_Layer: 0
   m_Name: mushstem 1 (37)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2947,7 +2947,7 @@ GameObject:
   - component: {fileID: 3399785041736254755}
   m_Layer: 0
   m_Name: mushstem 1 (12)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3034,7 +3034,7 @@ GameObject:
   - component: {fileID: 5169924314244014930}
   m_Layer: 0
   m_Name: mushstem 1 (33)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3121,7 +3121,7 @@ GameObject:
   - component: {fileID: 4831889521169025799}
   m_Layer: 0
   m_Name: mushstem 1 (26)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3208,7 +3208,7 @@ GameObject:
   - component: {fileID: 7135134706694805092}
   m_Layer: 0
   m_Name: mushstem 1 (30)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3295,7 +3295,7 @@ GameObject:
   - component: {fileID: 666886234406020084}
   m_Layer: 0
   m_Name: mushstem 1 (9)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3381,7 +3381,7 @@ GameObject:
   - component: {fileID: 3994317115757022971}
   m_Layer: 0
   m_Name: SHROOMGROUP
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3604,6 +3604,7 @@ MonoBehaviour:
   growSpeed: 1
   growDuration: 1
   serumCounter: 0
+  spawnplat: {fileID: 0}
   healthBar: {fileID: 0}
   anima: {fileID: 0}
 --- !u!114 &1605786949233558445
@@ -3638,7 +3639,7 @@ GameObject:
   - component: {fileID: 2721069050090313227}
   m_Layer: 0
   m_Name: mushstem 1 (16)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3725,7 +3726,7 @@ GameObject:
   - component: {fileID: 1144405294655887892}
   m_Layer: 0
   m_Name: mushstem 1 (24)
-  m_TagString: Untagged
+  m_TagString: Shroomaloom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,7 +12,7 @@ public class SpawnPlatform : MonoBehaviour
     {
         foreach(GameObject platform in platforms){
             if (platform != null)
-                platform.SetActive(false);
+                platform.SetActive(true);
         }
     }
 

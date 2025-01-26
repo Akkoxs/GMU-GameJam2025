@@ -17,6 +17,7 @@ public class Shroomaloom : LivingEntity
     [SerializeField] float growSpeed = 10f;
     [SerializeField] float growDuration = 2;
     [SerializeField] public int serumCounter = 0;
+    [SerializeField] public SpawnPlatform spawnplat;
     [SerializeField] public ShroomHealthBar healthBar;
     [SerializeField] public Animation anima;
     
@@ -40,6 +41,7 @@ public class Shroomaloom : LivingEntity
     public void SerumDelivery(){
         StartCoroutine(GrowMushroom());
         serumCounter++;
+        spawnplat.currPlatform++;
         serumDelivery = false; //reset back 
         platformSpawn =  false; //reset back 
         }
