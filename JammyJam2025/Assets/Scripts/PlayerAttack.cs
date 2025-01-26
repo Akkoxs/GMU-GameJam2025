@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public static PlayerAttack Instance;
     public bool isAttacking = false;
+    public bool isHeavyAttacking = false;
     public Animator animator;
     public Transform attackPoint;
     public LayerMask enemyLayer;
@@ -18,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         Instance = this;
         isAttacking = false;
+        isHeavyAttacking = false;
     }
 
     void Update()
@@ -27,30 +29,49 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (Input.GetMouseButtonDown(0) && !isAttacking && player.collisionInfo.below){
+        if (Input.GetMouseButtonDown(0) && !isAttacking && player.collisionInfo.below) 
+        {
             isAttacking = true;
         }
 
+        if (Input.GetMouseButtonDown(1) && !isAttacking && player.collisionInfo.below)
+        {
+            isHeavyAttacking = true;
+        }
     }
 
     public void slashHitstop()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 0.4f, enemyLayer);
+        int damage;
+        float hitS;
         if (hitEnemies.Length != 0)
         {
-            HitStop.Instance.Stop(0.15f);
+            if (isHeavyAttacking)
+            {
+                hitS = 0.25f;
+                damage = 10;
+            } else
+            {
+                hitS = 0.15f;
+                damage = 5;
+            }
+            HitStop.Instance.Stop(hitS);
             foreach (Collider2D enemy in hitEnemies)
             {
                 Enemy e = enemy.GetComponentInParent<Enemy>();
-                //Debug.Log("hit Enemies: " + enemy);
                 if (animator.GetCurrentAnimatorStateInfo(0).IsTag("FinalAttack"))
                 {
                     e.isFinalAttack = true;
                 }
-                    e.isBeingAttacked = true;
-                    e.TakeDamage(5);
-                
-                //enemy.GetComponentInParent<Rigidbody2D>().linearVelocity = new Vector2(100000, 0);
+
+                if (isHeavyAttacking)
+                {
+                    e.isHeavyAttack = true;
+                }
+
+                e.isBeingAttacked = true;
+                e.TakeDamage(damage);
             }
         }
     }
