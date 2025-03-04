@@ -99,9 +99,4 @@ public class GrowthSerum : MonoBehaviour
             transform.position = new Vector2(RHSnewPos, trans.position.y);
         }
     }
-
-    // public IEnumerator WaitFor2SecAndSpawn(){
-    //     yield return new WaitForSecondsRealtime(2);
-    //     GM.FirstWave();
-    // }
 }

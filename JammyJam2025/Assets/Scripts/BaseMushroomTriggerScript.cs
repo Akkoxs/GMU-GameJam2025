@@ -9,7 +9,7 @@ public class BaseMushroomTriggerScript : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !shroom.serumDelivery && serum.pickedUpSerum)
         {
-            Debug.Log("here in base mushroom");
+            //Debug.Log("here in base mushroom");
             shroom.serumDelivery = true;
             serum.droppedOffSerum = true;
             this.gameObject.SetActive(false);

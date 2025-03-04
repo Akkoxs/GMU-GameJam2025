@@ -38,12 +38,7 @@ public class HealthChangeAnim : MonoBehaviour
             healthChangeCorout = null;
             isChanging = false;
         }
-        // else if (!player.isDying && (healthChangeCorout != null)){
-        //     StopCoroutine(healthChangeCorout);
-        //     healthFill.color = ogColor;
-        //     healthChangeCorout = null;
-        //     isChanging = false;
-        // }
+
     }
 
     public IEnumerator HealthChangeCorout(){
