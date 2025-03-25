@@ -26,12 +26,6 @@ public class SpawnPlatform : MonoBehaviour
         }
     }
 
-// reference game object for transform position of island 
-// serialize all in order
-// store in array 
-// reference SerumDeliveries count from grow shroom script
-// every time serum goes up, unhide a platform 
-
 
     // Update is called once per frame
     void Update()

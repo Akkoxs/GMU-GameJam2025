@@ -6,11 +6,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+//handles serum delivery & shroom growth & ends game if shroom dies 
+
 public class Shroomaloom : LivingEntity
 {
     public Transform middlePoint;
     private Rigidbody2D rb;
     private Transform trans;
+    public GameOver GameOver;
 
     [SerializeField] public bool serumDelivery = false;
     [SerializeField] public bool platformSpawn = false;
@@ -20,6 +23,7 @@ public class Shroomaloom : LivingEntity
     [SerializeField] public SpawnPlatform spawnplat;
     [SerializeField] public ShroomHealthBar healthBar;
     [SerializeField] public Animation anima;
+    [SerializeField] public Animator vfx;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,9 +68,10 @@ public class Shroomaloom : LivingEntity
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
+        vfx.SetTrigger("shroomHit");
         if (health <= 0)
         {
-            SceneManager.LoadSceneAsync("GameOver");
+            GameOver.TriggerGameOver();
         }
     }
 

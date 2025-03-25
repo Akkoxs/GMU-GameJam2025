@@ -13,6 +13,8 @@ public class Player : LivingEntity
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
     public float moveSpeed = 1;
+    public float knockbackForce = 1.9f;
+    public float invincibilityTime = 1.8f;
 
     float gravity;
     float jumpVelocity;
@@ -21,19 +23,21 @@ public class Player : LivingEntity
 
     public float targetVelocityX;
     float velocityXSmoothing;
-
+    
+    public GameOver GameOver;
     private bool facingRight;
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] public HealthBar player_healthBar; 
+    [SerializeField] public Animator vfx;
+
 
     public bool isDying = false; //when youre taking damage lol
-    private float dieFlash = 0.5f; 
+    private float dieFlash = 0.6f; 
 
     [HideInInspector]
     private bool isAttacking;
-
     private bool isBeingAttacked;
     private bool hasBeenAttacked;
 
@@ -107,14 +111,14 @@ public class Player : LivingEntity
         {
             isBeingAttacked = true;
             base.TakeDamage(damage);
-            float knockbackForce = 1.5f;
             velocity = direction * knockbackForce;
             animator.SetTrigger("isHurt");
+            vfx.SetTrigger("playerHitVFX");
             isDying = true;
             player_healthBar.healthSlider.value = health;
             if (health <= 0)
             {
-                SceneManager.LoadSceneAsync("GameOver");
+                GameOver.TriggerGameOver();
             }
             StartCoroutine(invicibility());
             StartCoroutine(ResetisDying());
@@ -130,7 +134,7 @@ public class Player : LivingEntity
     IEnumerator invicibility()
     {
         hasBeenAttacked = true;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(invincibilityTime);
         hasBeenAttacked = false;
     }
 }
