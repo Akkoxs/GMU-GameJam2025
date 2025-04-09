@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(PlayerController))]
@@ -24,11 +22,9 @@ public class Player : LivingEntity
     public float targetVelocityX;
     float velocityXSmoothing;
     
-    public GameOver GameOver;
-    private bool facingRight;
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] public HealthBar player_healthBar; 
     [SerializeField] public Animator vfx;
 
@@ -37,7 +33,7 @@ public class Player : LivingEntity
     private float dieFlash = 0.6f; 
 
     [HideInInspector]
-    private bool isAttacking;
+    //private bool isAttacking;
     private bool isBeingAttacked;
     private bool hasBeenAttacked;
 
@@ -45,13 +41,14 @@ public class Player : LivingEntity
     public Vector2 input;
 
     PlayerController controller;
+    GameOver gameOver;
 
     public override void Start()
     {
         health = (int)player_healthBar.healthSlider.value; //starting health is whatever the slider is set to
         controller = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    
+        gameOver = GetComponent<GameOver>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
@@ -83,6 +80,8 @@ public class Player : LivingEntity
             animator.SetBool("isWalking", false);
         }
 
+        //if velocity.y < 0 then fall. 
+
         targetVelocityX = input.x * moveSpeed;
 
         if (velocity.x < 0f)
@@ -112,19 +111,19 @@ public class Player : LivingEntity
             isBeingAttacked = true;
             base.TakeDamage(damage);
             velocity = direction * knockbackForce;
-            animator.SetTrigger("isHurt");
             vfx.SetTrigger("playerHitVFX");
             isDying = true;
             player_healthBar.healthSlider.value = health;
-            if (health <= 0)
-            {
-                GameOver.TriggerGameOver();
+            if (health <= 0){
+                gameOver.TriggerGameOver();
             }
-            StartCoroutine(invicibility());
-            StartCoroutine(ResetisDying());
+            else{ //these corouts fuck with triggering a game over corout. leave em here 
+                animator.SetTrigger("isHurt");
+                StartCoroutine(invicibility());
+                StartCoroutine(ResetisDying());
+            }
         }
     }
-
     private IEnumerator ResetisDying(){
         yield return new WaitForSeconds(dieFlash);
         isDying = false;

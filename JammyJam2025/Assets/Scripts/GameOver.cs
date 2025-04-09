@@ -4,17 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-
-    public float gameOverTime = 2f;   
-
+    private bool limboTime = false;
+    public int gameOverTime = 5;   
+    Player player;
 
     public void TriggerGameOver(){
-        StartCoroutine(DeathWaitTime());
-        SceneManager.LoadSceneAsync("GameOver");
+        limboTime = true;
+        player = GetComponent<Player>();
+        player.velocity = new Vector3 (0,0,0);
+        player.animator.SetTrigger("isDead");
+        StartCoroutine(LimboTime());
+
+        //inshallah we shall add audio here 
     } 
 
-    public IEnumerator DeathWaitTime(){
-        yield return new WaitForSecondsRealtime(gameOverTime);
+    private IEnumerator LimboTime(){
+        if(limboTime){
+            yield return new WaitForSecondsRealtime(gameOverTime);
+            limboTime = false;
+            SceneManager.LoadSceneAsync("GameOver");
+        }
     }
 
 
