@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static PlayerAttack Instance;
+    public static PlayerAttack Instance; //static to ensure 1 instance globally?
     public bool isAttacking = false;
     public bool isHeavyAttacking = false;
     public Animator animator;
@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        Instance = this;
+        Instance = this; //sets Instance to this instance of this class? 
         isAttacking = false;
         isHeavyAttacking = false;
     }

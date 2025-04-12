@@ -116916,12 +116916,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: isMoving
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: groundMax
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: needSwitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: transitionTime
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: timeUntilTransition
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7173225656417198032, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_Material

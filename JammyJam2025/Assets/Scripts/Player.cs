@@ -80,8 +80,13 @@ public class Player : LivingEntity
             animator.SetBool("isWalking", false);
         }
 
-        //if velocity.y < 0 then fall. 
-
+        if ((velocity.y < 0) && !PlayerAttack.Instance.isAttacking){
+            animator.SetBool("isFalling", true);
+        }
+        else{
+            animator.SetBool("isFalling", false);
+        }
+        
         targetVelocityX = input.x * moveSpeed;
 
         if (velocity.x < 0f)
