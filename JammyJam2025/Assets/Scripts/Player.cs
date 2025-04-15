@@ -14,7 +14,7 @@ public class Player : LivingEntity
     public float knockbackForce = 1.9f;
     public float invincibilityTime = 1.8f;
 
-    float gravity;
+    public float gravity;
     float jumpVelocity;
     [HideInInspector]
     public Vector3 velocity;
@@ -33,14 +33,14 @@ public class Player : LivingEntity
     private float dieFlash = 0.6f; 
 
     [HideInInspector]
-    //private bool isAttacking;
     private bool isBeingAttacked;
     private bool hasBeenAttacked;
 
     [HideInInspector]
     public Vector2 input;
 
-    PlayerController controller;
+    public PlayerController controller;
+    public IntroSequence intro;
     GameOver gameOver;
 
     public override void Start()
@@ -49,6 +49,7 @@ public class Player : LivingEntity
         controller = GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameOver = GetComponent<GameOver>();
+        intro = GetComponent<IntroSequence>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
@@ -57,53 +58,54 @@ public class Player : LivingEntity
     void Update()
     {
         PlayerHP();
-
-        if (controller.collisionInfo.above || controller.collisionInfo.below)
-        {
-            velocity.y = 0;
-            animator.SetBool("isJumping", false);
-        }
-
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        if (Input.GetKeyDown(KeyCode.Space) && controller.collisionInfo.below)
-        {
-            velocity.y = jumpVelocity;
-            animator.SetBool("isJumping", true);
-        }
-
-        if ((velocity.x > 0 || velocity.x < 0) && !PlayerAttack.Instance.isAttacking)
-        {
-            animator.SetBool("isWalking", true);
-        } else
-        {
-            animator.SetBool("isWalking", false);
-        }
-
-        if ((velocity.y < 0) && !PlayerAttack.Instance.isAttacking){
-            animator.SetBool("isFalling", true);
-        }
-        else{
-            animator.SetBool("isFalling", false);
-        }
         
-        targetVelocityX = input.x * moveSpeed;
+        if(intro.enableIntro) return; {
+            if (controller.collisionInfo.above || controller.collisionInfo.below)
+            {
+                velocity.y = 0;
+                animator.SetBool("isJumping", false);
+            }
+        
+            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (velocity.x < 0f)
-        {
-            spriteRenderer.flipX = true;
-        } else if (velocity.x > 0f) {
-            spriteRenderer.flipX = false;
+            if (Input.GetKeyDown(KeyCode.Space) && controller.collisionInfo.below)
+            {
+                velocity.y = jumpVelocity;
+                animator.SetBool("isJumping", true);
+            }
+
+            if ((velocity.x > 0 || velocity.x < 0) && !PlayerAttack.Instance.isAttacking)
+            {
+                animator.SetBool("isWalking", true);
+            } else
+            {
+                animator.SetBool("isWalking", false);
+            }
+
+            if ((velocity.y < 0) && !PlayerAttack.Instance.isAttacking){
+                animator.SetBool("isFalling", true);
+            }
+            else{
+                animator.SetBool("isFalling", false);
+            }
+            
+            targetVelocityX = input.x * moveSpeed;
+
+            if (velocity.x < 0f)
+            {
+                spriteRenderer.flipX = true;
+            } else if (velocity.x > 0f) {
+                spriteRenderer.flipX = false;
+            }
+
+            if (!isBeingAttacked) {
+                velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+                velocity.x = targetVelocityX;
+            } 
+
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
         }
-
-
-        if (!isBeingAttacked) {
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisionInfo.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-            velocity.x = targetVelocityX;
-        } 
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 
     public void PlayerHP(){ // the exact same code as the PlayerHealth.cs file

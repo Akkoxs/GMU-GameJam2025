@@ -9,6 +9,7 @@ public class Healing : LivingEntity
     [SerializeField] public float healthIncTime = 0.3f;
     [SerializeField] public bool isHealing = false;
 
+    public bool introPause;
     private Coroutine healCoroutine;
 
     public void OnTriggerEnter2D(Collider2D collider){
@@ -32,7 +33,7 @@ public class Healing : LivingEntity
             if((healthBar.healthSlider.value + healthIncVal) > 100){
                 healthBar.healthSlider.value = healthBar.healthSlider.maxValue;
             }
-            else{
+            else if(!introPause) {
                 healthBar.healthSlider.value += healthIncVal;
             }
             yield return new WaitForSeconds(healthIncTime);
