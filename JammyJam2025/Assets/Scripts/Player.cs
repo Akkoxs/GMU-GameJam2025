@@ -60,7 +60,13 @@ public class Player : LivingEntity
         PlayerHP();
         
         if(intro.enableIntro) return; {
-            if (controller.collisionInfo.above || controller.collisionInfo.below)
+
+            if(controller.collisionInfo.below){
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isFalling", false);
+            }
+
+            if ((controller.collisionInfo.above || controller.collisionInfo.below))
             {
                 velocity.y = 0;
                 animator.SetBool("isJumping", false);
@@ -68,13 +74,14 @@ public class Player : LivingEntity
         
             input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            if (Input.GetKeyDown(KeyCode.Space) && controller.collisionInfo.below)
+            if (Input.GetKeyDown(KeyCode.Space) && controller.collisionInfo.below )
             {
                 velocity.y = jumpVelocity;
                 animator.SetBool("isJumping", true);
+                animator.SetBool("isFalling", false);
             }
 
-            if ((velocity.x > 0 || velocity.x < 0) && !PlayerAttack.Instance.isAttacking)
+            if ((velocity.x > 0 || velocity.x < 0) && !PlayerAttack.Instance.isAttacking && controller.collisionInfo.below)
             {
                 animator.SetBool("isWalking", true);
             } else
@@ -82,13 +89,15 @@ public class Player : LivingEntity
                 animator.SetBool("isWalking", false);
             }
 
-            if ((velocity.y < 0) && !PlayerAttack.Instance.isAttacking){
+            if ((velocity.y <= 0) && !PlayerAttack.Instance.isAttacking && !controller.collisionInfo.below){
                 animator.SetBool("isFalling", true);
+                animator.SetBool("isJumping", false);
             }
-            else{
-                animator.SetBool("isFalling", false);
-            }
+            // else if (controller.collisionInfo.below){
+            //     animator.SetBool("isFalling", false);
+            // }
             
+            Debug.Log(controller.collisionInfo.below);
             targetVelocityX = input.x * moveSpeed;
 
             if (velocity.x < 0f)
@@ -105,6 +114,7 @@ public class Player : LivingEntity
 
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
+
         }
     }
 

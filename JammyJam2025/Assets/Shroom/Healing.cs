@@ -29,7 +29,7 @@ public class Healing : LivingEntity
     // heals the dude 
     public IEnumerator Heal(){
         while(healthBar.healthSlider.value < healthBar.healthSlider.maxValue){
-            isHealing = true; //for the healthchanging animation 
+            isHealing = true; 
             if((healthBar.healthSlider.value + healthIncVal) > 100){
                 healthBar.healthSlider.value = healthBar.healthSlider.maxValue;
             }

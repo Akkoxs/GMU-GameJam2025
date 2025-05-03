@@ -4,13 +4,13 @@ using System.Collections;
 public class IntroSequence : MonoBehaviour
 {
     [SerializeField] public bool enableIntro;
-    [SerializeField] private float revivalTime = 1.5f;
+    [SerializeField] private float limboTime = 0.80f; //the time between the player input & allowing you to start 
     [SerializeField] private Healing healing;
     [SerializeField] private GameObject HealthBar; 
     [SerializeField] private GameObject ShroomHealthBar; 
     [SerializeField] private GameObject titleUI;
     [SerializeField] private CanvasRenderer titleCanvas;
-
+    [SerializeField] private HealFX healfx; 
 
     private Player player;
     private Coroutine corot = null; 
@@ -18,6 +18,7 @@ public class IntroSequence : MonoBehaviour
     void Start(){
         player = GetComponent<Player>();
         enableIntro = true;
+        healfx.introPauseAnim = true;
         HideHealthBars(true);
         titleUI.SetActive(false);
     }
@@ -39,16 +40,17 @@ public class IntroSequence : MonoBehaviour
         player.animator.SetBool("isDead", true);
         titleUI.SetActive(true);
         yield return StartCoroutine(FadeInTitle(0f, 1f, 1.0f)); //yield return statements wait for a return of the corout before proceeding 
-        yield return new WaitForSecondsRealtime(revivalTime);
-        healing.introPause = false;
-        healing.isHealing = true;
+        yield return new WaitUntil(() => Input.anyKey);
         player.animator.SetBool("isDead", false);
         player.animator.SetBool("isRevived", true);
+        yield return new WaitForSecondsRealtime(limboTime);
+        healing.isHealing = true;
         HideHealthBars(false);
-        //Title card UI flag 
-        enableIntro = false;
+        healing.introPause = false;
+        healfx.introPauseAnim = false;
         yield return StartCoroutine(FadeInTitle(1f, 0f, 1.5f));
-        titleUI.SetActive(false);
+        enableIntro = false;
+        titleUI.SetActive(false); 
     }
 
     public void HideHealthBars(bool command){
