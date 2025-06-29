@@ -4,7 +4,7 @@ using System.Collections;
 public class IntroSequence : MonoBehaviour
 {
     [SerializeField] public bool enableIntro;
-    [SerializeField] private float limboTime = 0.80f; //the time between the player input & allowing you to start 
+    [SerializeField] private float limboTime = 0.40f; //the time between the player input & allowing you to start 
     [SerializeField] private Healing healing;
     [SerializeField] private GameObject HealthBar; 
     [SerializeField] private GameObject ShroomHealthBar; 

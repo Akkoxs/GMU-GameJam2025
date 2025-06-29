@@ -80,7 +80,7 @@ public class Player : LivingEntity
                 animator.SetBool("isJumping", true);
                 animator.SetBool("isFalling", false);
             }
-
+    
             if ((velocity.x > 0 || velocity.x < 0) && !PlayerAttack.Instance.isAttacking && controller.collisionInfo.below)
             {
                 animator.SetBool("isWalking", true);
@@ -93,9 +93,6 @@ public class Player : LivingEntity
                 animator.SetBool("isFalling", true);
                 animator.SetBool("isJumping", false);
             }
-            // else if (controller.collisionInfo.below){
-            //     animator.SetBool("isFalling", false);
-            // }
             
             Debug.Log(controller.collisionInfo.below);
             targetVelocityX = input.x * moveSpeed;
