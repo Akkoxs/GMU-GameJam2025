@@ -1,88 +1,94 @@
-    using UnityEngine;
-    using System.Collections;
-    using UnityEngine.UI;
-    using UnityEngine.SceneManagement;
+        using UnityEngine;
+        using System.Collections;
+        using UnityEngine.UI;
+        using UnityEngine.SceneManagement;
 
-    public class MainMenu : MonoBehaviour
-    {
-
-        [SerializeField] private RawImage BlackScreen;
-        [SerializeField] private Transform playerSprite;
-        [SerializeField] private Transform CenterPoint;
-
-        static Color BlFade;
-
-        private float blackScreenTime = 1.3f;
-        private float moveIncrement = 0.00001f;
-        private bool isFalling = false; 
-        private Vector3 p_pos;
-        private Vector3 cp;
-
-        public void Start()
+        public class MainMenu : MonoBehaviour
         {
-            BlFade = BlackScreen.color;
-            BlFade.a = 1f;
-            BlackScreen.color = BlFade;
-            StartCoroutine(FadeScreen(BlFade, 1f, 0f, 1f, blackScreenTime, 0f, false, false));
-        }
 
-        public void Update(){
-            playerSprite.position = p_pos;
-            if (!isFalling){
-                StartCoroutine(FallSway());
-                isFalling = true;
+            [SerializeField] private RawImage BlackScreen;
+            [SerializeField] private Transform pS; //playerSPrite
+            [SerializeField] private Transform cp; //centerpoint
+            [SerializeField] private Transform LHS_Lim;
+            [SerializeField] private Transform RHS_Lim;
+
+            static Color BlFade;
+
+            private float tgt; //target
+            private float blackScreenTime = 1.3f;
+            private bool isFalling = false; 
+
+            public void Start()
+            {            
+                BlFade = BlackScreen.color;
+                BlFade.a = 1f;
+                BlackScreen.color = BlFade;
+                StartCoroutine(FadeScreen(BlFade, 1f, 0f, 1f, blackScreenTime, 0f, false, false));
             }
-        }
 
-        //while true, sway
-        //maybe have a lerp movment to a new Y
-        //new Y is calculated after place is reached as a RAND between 2 limits
-        private IEnumerator FallSway(){
-            //elapsed = 0;
-            while(p_pos.y > cp.y){
-                p_pos.y -= moveIncrement;
-                if(p_pos.y > cp.y){
-                    p_pos.y = cp.y;
+            public void Update(){
+                if (!isFalling){
+                    StartCoroutine(FallSway(pS.position.y, cp.position.y, 2f));
+                    isFalling = true;
                 }
+            }
+
+            private IEnumerator FallSway(float start, float end, float duration){
+                Vector3 pos = pS.position;
+                float elapsed = 0;
+
+                while(elapsed < duration){
+                    pos.y = Mathf.Lerp(start, end, elapsed/duration);
+                    pS.position = pos;
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+                pos.y = end;
+                pS.position = pos;
+
+                while(true){
+                    tgt = Random.Range(LHS_Lim.position.y, RHS_Lim.position.y);
+                    
+
+
+                    //p_pos.y = playerSprite.position.y;
+                    //while true, sway
+                    //maybe have a lerp movment to a new Y
+                    //new Y is calculated after place is reached as a RAND between 2 limits
+                    yield return null; 
+                }
+            }
+
+        public IEnumerator FadeScreen(Color UI, float start, float end, float duration, float delay, float endDelay, bool isActive, bool endScene)
+        { //copy and pasted code because im stupid
+            yield return new WaitForSecondsRealtime(delay);
+            float elapsed = 0;
+            while (duration > elapsed){
+                UI.a = Mathf.Lerp(start, end, elapsed / duration);
+                BlackScreen.color = UI;
+                elapsed += Time.deltaTime;
                 yield return null;
             }
-            while(true){
-                //p_pos.y = playerSprite.position.y;
-                yield return null; 
-            }
-        }
-
-    public IEnumerator FadeScreen(Color UI, float start, float end, float duration, float delay, float endDelay, bool isActive, bool endScene)
-    { //copy and pasted code because im stupid
-        yield return new WaitForSecondsRealtime(delay);
-        float elapsed = 0;
-        while (duration > elapsed)
-        {
-            UI.a = Mathf.Lerp(start, end, elapsed / duration);
+            UI.a = end;
             BlackScreen.color = UI;
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        UI.a = end;
-        BlackScreen.color = UI;
-        BlackScreen.gameObject.SetActive(isActive);
-        yield return new WaitForSecondsRealtime(endDelay);
-            if (endScene){
-                SceneManager.LoadSceneAsync(1); //this is horrible but idc anymore 
-                yield break;
+            BlackScreen.gameObject.SetActive(isActive);
+            yield return new WaitForSecondsRealtime(endDelay);
+                if (endScene){
+                    SceneManager.LoadSceneAsync(1); //this is horrible but idc anymore 
+                    yield break;
+                }
             }
-        }
 
-        public void PlayGame(){
-            BlackScreen.gameObject.SetActive(true);
-            BlFade = BlackScreen.color;
-            BlFade.a = 0f;
-            BlackScreen.color = BlFade;
-            StartCoroutine(FadeScreen(BlFade, 0f, 1f, 1.5f, 0f, blackScreenTime, true, true));
-        }
+            public void PlayGame(){
+                BlackScreen.gameObject.SetActive(true);
+                BlFade = BlackScreen.color;
+                BlFade.a = 0f;
+                BlackScreen.color = BlFade;
+                StartCoroutine(FadeScreen(BlFade, 0f, 1f, 1.5f, 0f, blackScreenTime, true, true));
+            }
 
-        public void QuitGame(){
-            Application.Quit();
-        }
+            public void QuitGame(){
+                Application.Quit();
+            }
 
-    }
+        }
