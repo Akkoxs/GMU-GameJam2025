@@ -25,7 +25,7 @@ public class GrowthSerum : MonoBehaviour
     [SerializeField] public float RHS_maxSpawn;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // 9 Serums is max 
     void Start()
     {
         droppedOffSerum = false;

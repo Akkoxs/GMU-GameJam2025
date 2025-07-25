@@ -15,17 +15,16 @@ public class IntroSequence : MonoBehaviour
     [SerializeField] private RawImage BLKSCRN;
 
     private Player player;
-    public MainMenu mainMenu;
     private Coroutine corot = null;
     private Color BlackFade;
 
     void Start()
     {
+        BLKSCRN.gameObject.SetActive(true);
         BlackFade = BLKSCRN.color;
         BlackFade.a = 1f;
         BLKSCRN.color = BlackFade;
         player = GetComponent<Player>();
-        enableIntro = true;
         healfx.introPauseAnim = true;
         HideHealthBars(true);
         titleUI.SetActive(false);
@@ -113,15 +112,4 @@ public class IntroSequence : MonoBehaviour
         BLKSCRN.color = UI;
         BLKSCRN.gameObject.SetActive(false);
         }
-
-    // start off falling 
-    // make sure player cannot move 
-    // hits ground, starts sequence.
-    // hp = like 1 
-    // death anim.
-    // pause
-    // revival anim. + healing anim. 
-    // title card.
-    // fuck yeah you can play now 
-    // disable update script.
 }

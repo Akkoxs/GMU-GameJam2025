@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
         Vector3 pos = pS.position;
         yield return new WaitForSecondsRealtime(2.5f);
         while(true){
-            transition = Random.Range(3f, 5f);
+            transition = Random.Range(1f, 4f);
             tgt = Random.Range(LHS_Lim.position.x, RHS_Lim.position.x);
             float swayTimer = 0;
             float sp = pS.position.x; //startpoint
