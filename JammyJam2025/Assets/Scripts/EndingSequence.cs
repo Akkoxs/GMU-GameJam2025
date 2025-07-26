@@ -21,6 +21,7 @@ public class EndingSequence : MonoBehaviour
     // FADE TO BLACK
     // Change to EndScene.
     // Thanks for playing.
+    
     // Sunspore says: Don't make others suffer for your personal hatred, stuff like that LOL. Evangelion Font.
     // Did you dream?
     // Remember your promise.
