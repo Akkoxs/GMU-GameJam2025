@@ -36,14 +36,13 @@ public class GrowthSerum : MonoBehaviour
         trans = GetComponent<Transform>();
     }
 
-    public void Update()
-    {
-        if (droppedOffSerum)
-        {
+    public void Update(){
+        if (droppedOffSerum){
             inventorySerum.enabled = false;
             sidePicker = Random.Range(1,3);
             LHSnewPos = Random.Range(LHS_minSpawn, LHS_maxSpawn);
             RHSnewPos = Random.Range(RHS_minSpawn, RHS_maxSpawn);
+            
             if (!SpawningNewSerum) {
                 StartCoroutine(Wait());
             }

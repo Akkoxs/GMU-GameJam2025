@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     // These two are totally not confusing as fuck
     public Player player;
     public Shroomaloom shroomaloom;
@@ -17,12 +16,21 @@ public class GameManager : MonoBehaviour
     private int enemiesSpawned = 1;
     private int enemiesAlive = 1;
 
-    // void Start()
-    // {
-    //     StartNextWave();
-    // }
+    [Header("Ending Testing ")]
+    [SerializeField] bool enable_DevTestEnding = true; //change to false l8r
 
-    public void FirstWave(){ //this method is initiated in GrowthSerum script
+    public void EndingState() {
+        //if ending conditions met or DevTestOK!
+
+        //set the height of the thingy 
+        //set the current wave, etc.
+        //no enemies 
+    }
+
+
+
+
+    public void FirstWave() { //this method is initiated in GrowthSerum script
         StartNextWave();
         //musical queue !
     }
