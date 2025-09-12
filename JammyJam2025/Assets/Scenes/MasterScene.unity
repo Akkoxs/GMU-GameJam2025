@@ -116571,11 +116571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: transitionTime
-      value: 0.75
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6947088906106810379, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: timeUntilTransition
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7173225656417198032, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: m_Material
@@ -116597,6 +116597,10 @@ PrefabInstance:
       propertyPath: BLKSCRN
       value: 
       objectReference: {fileID: 1480347361}
+    - target: {fileID: 8742671730306801885, guid: 3747073761113d348a95b67af70294d8, type: 3}
+      propertyPath: camDamp
+      value: 
+      objectReference: {fileID: 1073565132}
     - target: {fileID: 8742671730306801885, guid: 3747073761113d348a95b67af70294d8, type: 3}
       propertyPath: healing
       value: 
@@ -116923,7 +116927,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
+  Damping: {x: 0, y: 0, z: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -118851,10 +118855,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 765567153}
+  - {fileID: 1073565134}
   - {fileID: 516764388}
   - {fileID: 999506184}
   - {fileID: 1156635515}
-  - {fileID: 1073565134}
   - {fileID: 4304591178112546226}
   - {fileID: 88813263}
   - {fileID: 892853258}

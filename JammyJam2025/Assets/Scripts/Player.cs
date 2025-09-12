@@ -94,7 +94,6 @@ public class Player : LivingEntity
                 animator.SetBool("isJumping", false);
             }
             
-            Debug.Log(controller.collisionInfo.below);
             targetVelocityX = input.x * moveSpeed;
 
             if (velocity.x < 0f)

@@ -10,6 +10,7 @@ public class GrowthSerum : MonoBehaviour
     public int serumCount = 0;
     public float LHSnewPos;
     public float RHSnewPos;
+    public bool SpawningNewSerum;
     public GameObject baseMushroomTrigger;
 
     private Transform trans;
@@ -29,7 +30,8 @@ public class GrowthSerum : MonoBehaviour
     void Start()
     {
         droppedOffSerum = false;
-        inventorySerum.enabled = false; 
+        inventorySerum.enabled = false;
+        SpawningNewSerum = false; //default state 
         spriteRenderer = GetComponent<SpriteRenderer>();
         trans = GetComponent<Transform>();
     }
@@ -42,7 +44,9 @@ public class GrowthSerum : MonoBehaviour
             sidePicker = Random.Range(1,3);
             LHSnewPos = Random.Range(LHS_minSpawn, LHS_maxSpawn);
             RHSnewPos = Random.Range(RHS_minSpawn, RHS_maxSpawn);
-            StartCoroutine(Wait());
+            if (!SpawningNewSerum) {
+                StartCoroutine(Wait());
+            }
         }
 
     }
@@ -55,7 +59,6 @@ public class GrowthSerum : MonoBehaviour
             if(serumCount == 1){
                 pickedUpSerum = true;
                 serumCount++;
-                //StartCoroutine(WaitFor2SecAndSpawn());
                 GM.FirstWave();
                 inventorySerum.enabled = true;
                 spriteRenderer.enabled = false;
@@ -79,8 +82,8 @@ public class GrowthSerum : MonoBehaviour
         }
     }
 
-    public IEnumerator Wait()
-    {
+    public IEnumerator Wait() {
+        SpawningNewSerum = true;
         yield return new WaitForSecondsRealtime(5f);
         RandomSpawner();
         pickedUpSerum = false;
@@ -88,6 +91,7 @@ public class GrowthSerum : MonoBehaviour
         inventorySerum.enabled = false;
         baseMushroomTrigger.SetActive(false);
         spriteRenderer.enabled = true;
+        SpawningNewSerum = false;
     }
 
     public void RandomSpawner(){

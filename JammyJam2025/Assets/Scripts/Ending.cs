@@ -1,8 +1,10 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class Ending : MonoBehaviour
 {
@@ -11,33 +13,48 @@ public class Ending : MonoBehaviour
     [SerializeField] private float diaSpeed = 0.01f;
     [SerializeField] private TextMeshProUGUI text;
 
+    [Header("Fading")]
+    [SerializeField] private RawImage BLKSCRN; //needed to use UI elem. to cover everything
+    private Color BlackFade; //is a colour, colours have alpha property while RawImages dont 
 
-    public void ActivateSunSpeech(){
+    void Start() {
+        BLKSCRN.gameObject.SetActive(true);
+        BlackFade = BLKSCRN.color;
+        BlackFade.a = 1f; //ensure starts at opaque
+        BLKSCRN.color = BlackFade;
+        StartCoroutine(FadeScreen(BlackFade, 1f, 0f, 2.5f, 0.00125f));
+    }
+    
+    public void ActivateSunSpeech() {
         StartCoroutine(SunSpeech());
     }
 
-    private IEnumerator SunSpeech()
-    {
+    private IEnumerator SunSpeech(){
         int randomDia = Random.Range(0, diaText.Count);
 
-        for (int i = 0; i < diaText[randomDia].Length + 1; i++)
-        {
+        for (int i = 0; i < diaText[randomDia].Length + 1; i++){
             text.text = diaText[randomDia].Substring(0, i);
             yield return new WaitForSecondsRealtime(diaSpeed);
+            
         }
     }
 
-    // Sunspore says: Don't make others suffer for your personal hatred, stuff like that LOL. Evangelion Font.
-    // Did you dream?
-    // Remember your promise.
-    // The wind will come again.
-    // Afterall, why not me?
-    // We knew eachother, long ago, but you have forgotten 
-    // Do you remember, my love?
-    // Rage. Rage against the dying of the light.
-    // Did you exchange, a walk-on part in the war, for a lead role in a cage?
-    // I wish you were here.
-    // I am so glad you are here.
-    // 
+    //next time make a static non-monobehaviour class with static methods as a UI helper not this bullshit 
+    public IEnumerator FadeScreen(Color UI, float start, float end, float duration, float fadespeed) {
+        float elapsed = 0;
+        yield return new WaitForSecondsRealtime(2.25f);
+        while (duration > elapsed) {
+            UI.a = Mathf.Lerp(start, end, elapsed / duration);
+            BLKSCRN.color = UI;
+            elapsed += Time.deltaTime;
+            yield return new WaitForSecondsRealtime(fadespeed);
+        }
+        UI.a = end;
+        BLKSCRN.color = UI;
+        BLKSCRN.gameObject.SetActive(false);
+    }
 
+    public void HOME() {
+    SceneManager.LoadSceneAsync(0);
+    }
 }

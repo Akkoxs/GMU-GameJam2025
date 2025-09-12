@@ -18,7 +18,7 @@ public class EndingSequence : MonoBehaviour
     // twinkling SFX as you rise.
     // Upon Serum#9 is reached, a bool is enabled for this script, which makes the top of the shroom pad into a trigger which starts the ending sequence. 
     // Once stepped on, similar to IntroSequence, healing anim. is cancelled, camState is changed from CamSelector to middleof the SUNSPORE
-    // Player controll is taken away
+    // Player control is taken away
     // Dreadful SFX
     // TEXT SAYING THE SUNSPORE.
     // FADE TO BLACK

@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CamSelector : MonoBehaviour // pans the camera to focus during gameplay
@@ -34,24 +32,27 @@ public class CamSelector : MonoBehaviour // pans the camera to focus during game
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(needSwitch);
         //WhichState
-        if(Player.transform.position.y >= shroomMin){
+        if (Player.transform.position.y >= shroomMin) {
             currentState = camStates.Shroom;
             targetCam = shroomCam;
         }
-        else if((groundMax < Player.transform.position.y) && (Player.transform.position.y < shroomMin)){
+        else if ((groundMax < Player.transform.position.y) && (Player.transform.position.y < shroomMin)) {
             currentState = camStates.Platform;
             targetCam = platformCam;
         }
-        else if(Player.transform.position.y <= groundMax){
-            currentState = camStates.Ground; 
+        else if (Player.transform.position.y <= groundMax) {
+            currentState = camStates.Ground;
             targetCam = groundCam;
         }
-        else{
+        else {
             Debug.Log("Camera Selector does not know where to go.");
         }
-        
-        switchCoroutine = StartCoroutine(NeedSwitch(targetCam));
+
+        if (switchCoroutine == null) {
+            switchCoroutine = StartCoroutine(NeedSwitch(targetCam));
+        }
 
         //move camAnchor to the targetCam if needSwitch is true 
         if (needSwitch && !isMoving){
@@ -63,30 +64,33 @@ public class CamSelector : MonoBehaviour // pans the camera to focus during game
     public IEnumerator MoveCam(Transform camTarget){
         isMoving = true;
         float elapsedTime = 0f;
-        while (!Mathf.Approximately(camAnchor.position.y, camTarget.position.y)){
-            Vector2 startPos = camAnchor.position;
-            Vector2 endPos = camTarget.position;
+        while (elapsedTime < transitionTime) {
+            Vector2 startPos = new Vector2(Player.transform.position.x, camAnchor.position.y);
+            Vector2 endPos = new Vector2(Player.transform.position.x, camTarget.position.y);
             camAnchor.position = Vector2.Lerp(startPos, endPos, elapsedTime / transitionTime);
             elapsedTime += Time.deltaTime;
             yield return null; //wait until next frame 
         }
+        camAnchor.position = new Vector2(Player.transform.position.x, camTarget.position.y);
     isMoving = false;
     }
 
     private IEnumerator NeedSwitch(Transform camTarget){
+        //does this even need to exist? Can i rewrite this simply into an if statement checked every update?
         float timeNotMatching = 0f;
-        while (true){
-            if (!Mathf.Approximately(camAnchor.position.y, camTarget.position.y)){
+        while (true) {
+            if (!Mathf.Approximately(camAnchor.position.y, camTarget.position.y)) {
                 timeNotMatching += Time.deltaTime;
-                if (timeNotMatching > timeUntilTransition){
+                if (timeNotMatching > timeUntilTransition) {
                     needSwitch = true;
-                    yield break; //break to else and reset 
+                    yield break; //break to else and reset
                 }
             }
             else {
                 timeNotMatching = 0f;
             }
             yield return null;
+            switchCoroutine = null;
         }
     }
 

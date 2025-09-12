@@ -56,5 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "JammyJam2025.sln"
+    "dotnet.defaultSolution": "JammyJam2025.sln",
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.useEditorFormattingSettings": false
 }
