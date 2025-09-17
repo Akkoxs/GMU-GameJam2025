@@ -12,6 +12,11 @@ public class Ending : MonoBehaviour
 
     [SerializeField] private float diaSpeed = 0.01f;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI dot;
+    [SerializeField] private float dotFreq;
+
+    private bool hasPressed = false;
+    private Coroutine DotDot;
 
     [Header("Fading")]
     [SerializeField] private RawImage BLKSCRN; //needed to use UI elem. to cover everything
@@ -24,8 +29,16 @@ public class Ending : MonoBehaviour
         BLKSCRN.color = BlackFade;
         StartCoroutine(FadeScreen(BlackFade, 1f, 0f, 2.5f, 0.00125f));
     }
+
+    void Update() {
+
+        if (DotDot == null) {
+            DotDot = StartCoroutine(InteractionCue());
+        }
+    }
     
     public void ActivateSunSpeech() {
+        hasPressed = true;
         StartCoroutine(SunSpeech());
     }
 
@@ -35,8 +48,17 @@ public class Ending : MonoBehaviour
         for (int i = 0; i < diaText[randomDia].Length + 1; i++){
             text.text = diaText[randomDia].Substring(0, i);
             yield return new WaitForSecondsRealtime(diaSpeed);
-            
         }
+    }
+
+    private IEnumerator InteractionCue() {
+        while (!hasPressed) {
+            dot.enabled = true;
+            yield return new WaitForSecondsRealtime(dotFreq);
+            dot.enabled = false;
+            yield return new WaitForSecondsRealtime(dotFreq);
+        }
+        
     }
 
     //next time make a static non-monobehaviour class with static methods as a UI helper not this bullshit 

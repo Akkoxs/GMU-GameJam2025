@@ -42,27 +42,30 @@ public class GrowthSerum : MonoBehaviour
             sidePicker = Random.Range(1,3);
             LHSnewPos = Random.Range(LHS_minSpawn, LHS_maxSpawn);
             RHSnewPos = Random.Range(RHS_minSpawn, RHS_maxSpawn);
-            
+
             if (!SpawningNewSerum) {
                 StartCoroutine(Wait());
             }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !pickedUpSerum)
-        {
+        if (collision.CompareTag("Player") && !pickedUpSerum){
+            pickedUpSerum = true;
+            serumCount++;
+            inventorySerum.enabled = true;
+            spriteRenderer.enabled = false;
+            baseMushroomTrigger.SetActive(true);
 
-            if(serumCount == 1){
-                pickedUpSerum = true;
-                serumCount++;
-                GM.FirstWave();
-                inventorySerum.enabled = true;
-                spriteRenderer.enabled = false;
-                baseMushroomTrigger.SetActive(true);
-            }
+            // if (serumCount == 1) {
+            //     pickedUpSerum = true;
+            //     serumCount++;
+            //     GM.FirstWave();
+            //     inventorySerum.enabled = true;
+            //     spriteRenderer.enabled = false;
+            //     baseMushroomTrigger.SetActive(true);
+            // }
 
             //   else if(serumCount == 9){ //WHY WONT IT WORK WHY WHY WHY
             //     pickedUpSerum = false;
@@ -71,13 +74,13 @@ public class GrowthSerum : MonoBehaviour
             //     baseMushroomTrigger.SetActive(false);
             //   }
 
-            else{
-                pickedUpSerum = true;
-                serumCount++;
-                inventorySerum.enabled = true;
-                spriteRenderer.enabled = false;
-                baseMushroomTrigger.SetActive(true);
-            }
+            // else{
+            //     pickedUpSerum = true;
+            //     serumCount++;
+            //     inventorySerum.enabled = true;
+            //     spriteRenderer.enabled = false;
+            //     baseMushroomTrigger.SetActive(true);
+            // }
         }
     }
 
